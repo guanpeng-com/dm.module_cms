@@ -133,21 +133,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NHibernate\Mappings\RoleMap.cs" />
-    <Compile Include="NHibernate\Mappings\UserMap.cs" />
-    <Compile Include="NHibernate\Mappings\TenantMap.cs" />
     <Compile Include="NHibernate\NHibernateTestBase.cs" />
     <Compile Include="NHibernate\Repositories\AbpProjectNameRepositoryBase.cs" />
-    <Compile Include="NHibernate\TestDatas\InitialTenantsBuilder.cs" />
     <Compile Include="NHibernate\TestDatas\InitialTestDataBuilder.cs" />
-    <Compile Include="NHibernate\TestDatas\InitialTestLanguagesBuilder.cs" />
     <Compile Include="NHibernate\TestDatas\InitialTestOrganizationUnitsBuilder.cs" />
-    <Compile Include="NHibernate\TestDatas\InitialUsersBuilder.cs" />
-    <Compile Include="NHibernate\UserManager_Tests.cs" />
-    <Compile Include="Organizations\OrganizationUnitManager_NHibernate_Tests.cs" />
+    <Compile Include="Channels\ChannelManager_NHibernate_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NHibernate\SampleAppNHibernateModule.cs" />
-    <Compile Include="NHibernate\TestDatas\InitialUserOrganizationUnitsBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -164,13 +156,12 @@
       <Project>{70d916f2-9bff-43da-b3f7-3e0655114d48}</Project>
       <Name>Abp.CMS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Abp.CMS.SampleApp\Abp.CMS.SampleApp.csproj">
-      <Project>{59AA0119-F76E-433F-B9D1-385F51A13A17}</Project>
-      <Name>Abp.CMS.SampleApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NHibernate\Mappings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

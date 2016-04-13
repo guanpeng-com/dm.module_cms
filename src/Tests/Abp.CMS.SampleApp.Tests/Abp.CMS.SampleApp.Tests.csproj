@@ -137,34 +137,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Editions\EditionAndFeature_Tests.cs" />
-    <Compile Include="Configuration\Settings_Tests.cs" />
-    <Compile Include="IdentityFramework\IdentityResultHelper_Tests.cs" />
-    <Compile Include="Ldap\LdapAuthenticationSource_Tests.cs" />
-    <Compile Include="Localization\ApplicationLanguageManager_Tests.cs" />
-    <Compile Include="Localization\ApplicationLanguageProvider_Tests.cs" />
-    <Compile Include="Organizations\OrganizationUnitManager_Tests.cs" />
-    <Compile Include="Organizations\OrganizationUnit_Tests.cs" />
-    <Compile Include="TestDatas\InitialTenantsBuilder.cs" />
-    <Compile Include="TestDatas\InitialTestDataBuilder.cs" />
-    <Compile Include="TestDatas\InitialTestLanguagesBuilder.cs" />
-    <Compile Include="Localization\SimpleLocalization_Tests.cs" />
-    <Compile Include="MultiTenancy\TenantManager_Tests.cs" />
-    <Compile Include="Roles\RoleManager_Delete_Tests.cs" />
-    <Compile Include="Roles\RoleManager_Tests.cs" />
+    <Compile Include="Channels\ChannelManager_Tests.cs" />
+    <Compile Include="Channels\Channel_Tests.cs" />
     <Compile Include="SampleAppTestBase.cs" />
-    <Compile Include="TestDatas\InitialTestOrganizationUnitsBuilder.cs" />
-    <Compile Include="TestDatas\InitialUserOrganizationUnitsBuilder.cs" />
-    <Compile Include="TestDatas\InitialUsersBuilder.cs" />
-    <Compile Include="Users\UserAppService_Tests.cs" />
-    <Compile Include="Users\UserLoginHelper.cs" />
-    <Compile Include="Users\UserLogin_ExternalAuthenticationSources_Test.cs" />
-    <Compile Include="Users\UserLogin_Tests.cs" />
-    <Compile Include="Users\UserManager_Permission_Tests.cs" />
-    <Compile Include="Users\UserOrganizationUnit_Tests.cs" />
-    <Compile Include="Users\UserRepository_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users\UserRole_Tests.cs" />
+    <Compile Include="TestDatas\InitialTestDataBuilder.cs" />
+    <Compile Include="TestDatas\InitialTestChannelsBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -176,10 +154,6 @@
     <ProjectReference Include="..\..\Abp.CMS.EntityFramework\Abp.CMS.EntityFramework.csproj">
       <Project>{b728e703-345b-4553-a8b0-b28bb6738688}</Project>
       <Name>Abp.CMS.EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Abp.CMS.Ldap\Abp.CMS.Ldap.csproj">
-      <Project>{587409A2-2470-4CC4-8F81-DB0A2B3E57A5}</Project>
-      <Name>Abp.CMS.Ldap</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Abp.CMS.NHibernate\Abp.CMS.NHibernate.csproj">
       <Project>{c43a88ee-1537-40bb-8154-4271e6aad919}</Project>
@@ -196,10 +170,6 @@
     <ProjectReference Include="..\Abp.CMS.SampleApp.NHibernateTests\Abp.CMS.SampleApp.NHibernateTests.csproj">
       <Project>{28d2e425-ba18-4451-9748-86a8ff596414}</Project>
       <Name>Abp.CMS.SampleApp.NHibernateTests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Abp.CMS.SampleApp\Abp.CMS.SampleApp.csproj">
-      <Project>{59AA0119-F76E-433F-B9D1-385F51A13A17}</Project>
-      <Name>Abp.CMS.SampleApp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

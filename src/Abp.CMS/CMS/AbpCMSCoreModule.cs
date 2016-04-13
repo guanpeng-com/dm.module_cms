@@ -17,13 +17,10 @@ namespace Abp.CMS
         /// <summary>
         /// Current version of the CMS module.
         /// </summary>
-        public const string CurrentVersion = "0.8.3.0";
+        public const string CurrentVersion = "0.1.0.0";
 
         public override void PreInitialize()
         {
-            IocManager.Register<IRoleManagementConfig, RoleManagementConfig>();
-            IocManager.Register<IUserManagementConfig, UserManagementConfig>();
-            IocManager.Register<ILanguageManagementConfig, LanguageManagementConfig>();
             IocManager.Register<IAbpCMSConfig, AbpCMSConfig>();
 
             Configuration.Settings.Providers.Add<AbpCMSSettingProvider>();
@@ -39,7 +36,6 @@ namespace Abp.CMS
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
-            IocManager.Register<IMultiTenantLocalizationDictionary, MultiTenantLocalizationDictionary>(DependencyLifeStyle.Transient);
         }
     }
 }

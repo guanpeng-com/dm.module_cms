@@ -107,60 +107,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CMS\FluentMigrator\AbpFluentMigratorExtensions.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_01_CreateAbpTenantsTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_02_CreateAbpRolesTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_03_CreateAbpUsersTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_04_CreateAbpUserRolesTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_05_CreatePermissionsTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_06_CreateAbpUserLoginsTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140323_07_CreateAbpSettingsTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150301_01_Add_IsSuspended_To_AbpUsers_And_AbpTenants_Tables - Copy.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150312_01_Add_DeleteAuidit_To_AbpTenants_Tables.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150811_01_Add_AuditColumns_To_AbpUsers.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150811_02_CreateAbpAuditLogsTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150811_03_Add_Columns_To_AbpRoles.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150812_01_Add_Discriminator_To_AbpPermissions.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20150922_01_Add_Columns_To_AbpAuditLogs.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151103_01_Create_AbpLanguages_Table.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151103_02_Create_AbpLanguageTexts_Table.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151221_01_Create_AbpOrganizationUnit_Table.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151221_02_Create_AbpUserOrganizationUnits_Table.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_01_Create_Editions_And_Features_Tables.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_02_Create_Indexes_For_AuditLogs.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_03_Create_Indexes_For_AbpLanguages.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_04_Create_Indexes_For_AbpLanguages.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_05_Create_Indexes_For_AbpOrganizationUnits.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_06_Create_Indexes_For_AbpPermissions.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_07_Revise_AbpRoles.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_08_Revise_AbpSettings.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_09_Revise_AbpTenants.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_10_Revise_AbpUserLogins.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_11_Create_Indexes_For_AbpUserOrganizationUnits.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_12_Create_Indexes_For_AbpUserRoles.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20151230_13_Revise_Users.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20160122_01_Create_AbpBackgroundJobs_Table.cs" />
     <Compile Include="CMS\FluentMigrator\VersionTable.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140829_01_Add_Columns_To_AbpUsers_Table.cs" />
-    <Compile Include="CMS\FluentMigrator\Migrations\_20140830_01_Add_Columns_To_AbpRoles_Table.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\ApplicationLanguageMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\ApplicationLanguageTextMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\AuditLogMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\BackgroundJobInfoMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\EditionFeatureSettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\EditionMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\FeatureSettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\OrganizationUnitMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\PermissionSettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\AbpRoleMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\RolePermissionSettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\SettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\TenantFeatureSettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\AbpTenantMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\UserLoginMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\AbpUserMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\UserOrganizationUnitMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\UserPermissionSettingMap.cs" />
-    <Compile Include="CMS\NHibernate\EntityMappings\UserRoleMap.cs" />
+    <Compile Include="CMS\NHibernate\EntityMappings\ChannelMap.cs" />
     <Compile Include="CMS\NHibernate\AbpCMSNHibernateModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,6 +125,9 @@
       <Project>{70d916f2-9bff-43da-b3f7-3e0655114d48}</Project>
       <Name>Abp.CMS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CMS\FluentMigrator\Migrations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

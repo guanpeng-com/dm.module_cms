@@ -5,7 +5,7 @@ using Abp.Configuration.Startup;
 using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
-using Abp.Organizations;
+using Abp.Channels;
 using Abp.Runtime.Caching;
 using Abp.CMS.Configuration;
 using Abp.CMS.SampleApp.MultiTenancy;
@@ -26,9 +26,9 @@ namespace Abp.CMS.SampleApp.Users
             IUserManagementConfig userManagementConfig,
             IIocResolver iocResolver,
             ICacheManager cacheManager,
-            IRepository<OrganizationUnit, long> organizationUnitRepository, 
-            IRepository<UserOrganizationUnit, long> userOrganizationUnitRepository,
-            IOrganizationUnitSettings organizationUnitSettings,
+            IRepository<Channel, long> ChannelRepository, 
+            IRepository<UserChannel, long> userChannelRepository,
+            IChannelSettings ChannelSettings,
             IRepository<UserLoginAttempt, long> userLoginAttemptRepository)
             : base(
                 userStore,
@@ -41,9 +41,9 @@ namespace Abp.CMS.SampleApp.Users
                 userManagementConfig,
                 iocResolver,
                 cacheManager,
-                organizationUnitRepository,
-                userOrganizationUnitRepository,
-                organizationUnitSettings,
+                ChannelRepository,
+                userChannelRepository,
+                ChannelSettings,
                 userLoginAttemptRepository)
         {
         }

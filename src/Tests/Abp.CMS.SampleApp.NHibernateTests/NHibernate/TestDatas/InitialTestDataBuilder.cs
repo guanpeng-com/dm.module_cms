@@ -14,12 +14,8 @@ namespace Abp.CMS.SampleApp.NHibernate.TestDatas
         public void Build()
         {
             //_session.DisableAllFilters(); //TODO: Needs?
-
-            new InitialTenantsBuilder(_session).Build();
-            new InitialUsersBuilder(_session).Build();
-            new InitialTestLanguagesBuilder(_session).Build();
-            new InitialTestOrganizationUnitsBuilder(_session).Build();
-            new InitialUserOrganizationUnitsBuilder(_session).Build();
+            
+            new InitialTestChannelsBuilder(_session).Build();
         }
     }
 }

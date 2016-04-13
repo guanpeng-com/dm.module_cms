@@ -5,7 +5,6 @@ using System.Linq;
 using Abp.Collections;
 using Abp.Modules;
 using Abp.TestBase;
-using Abp.CMS.SampleApp.MultiTenancy;
 using Abp.CMS.SampleApp.NHibernate.TestDatas;
 using Castle.MicroKernel.Registration;
 using NHibernate;
@@ -66,15 +65,6 @@ namespace Abp.CMS.SampleApp.NHibernate
             }
 
             return result;
-        }
-
-        protected Tenant GetDefaultTenant()
-        {
-            return UsingSession(
-                session =>
-                {
-                    return session.Query<Tenant>().Single(t => t.TenancyName == Tenant.DefaultTenantName);
-                });
         }
 
         public override void Dispose()

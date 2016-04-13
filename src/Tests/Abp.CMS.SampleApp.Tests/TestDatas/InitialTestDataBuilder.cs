@@ -16,11 +16,7 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
         {
             _context.DisableAllFilters();
 
-            new InitialTenantsBuilder(_context).Build();
-            new InitialUsersBuilder(_context).Build();
-            new InitialTestLanguagesBuilder(_context).Build();
-            new InitialTestOrganizationUnitsBuilder(_context).Build();
-            new InitialUserOrganizationUnitsBuilder(_context).Build();
+            new InitialTestChannelsBuilder(_context).Build();
         }
     }
 }

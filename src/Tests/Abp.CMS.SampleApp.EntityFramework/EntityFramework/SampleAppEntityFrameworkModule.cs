@@ -4,7 +4,7 @@ using Abp.CMS.EntityFramework;
 
 namespace Abp.CMS.SampleApp.EntityFramework
 {
-    [DependsOn(typeof(AbpCMSEntityFrameworkModule), typeof(SampleAppModule))]
+    [DependsOn(typeof(AbpCMSEntityFrameworkModule))]
     public class SampleAppEntityFrameworkModule : AbpModule
     {
         public override void Initialize()

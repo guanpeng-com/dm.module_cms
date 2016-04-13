@@ -11,16 +11,9 @@ namespace Abp.CMS.Configuration
             return new List<SettingDefinition>
                    {
                        new SettingDefinition(
-                           AbpCMSSettingNames.UserManagement.IsEmailConfirmationRequiredForLogin,
-                           "false",
-                           new FixedLocalizableString("Is email confirmation required for login."),
-                           scopes: SettingScopes.Application | SettingScopes.Tenant,
-                           isVisibleToClients: true
-                           ),
-                       new SettingDefinition(
-                           AbpCMSSettingNames.OrganizationUnits.MaxUserMembershipCount,
+                           AbpCMSSettingNames.Channel.MaxUserMembershipCount,
                            int.MaxValue.ToString(),
-                           new FixedLocalizableString("Maximum allowed organization unit membership count for a user."),
+                           new FixedLocalizableString("Maximum allowed channel membership count for a user."),
                            scopes: SettingScopes.Application | SettingScopes.Tenant,
                            isVisibleToClients: true
                            )

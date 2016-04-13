@@ -1,9 +1,6 @@
-﻿using System.Linq;
-using Abp.Channels;
-using NHibernate;
-using NHibernate.Linq;
+﻿using Abp.CMS.SampleApp.EntityFramework;
 
-namespace Abp.CMS.SampleApp.NHibernate.TestDatas
+namespace Abp.CMS.SampleApp.Tests.TestDatas
 {
     /* Creates OU tree for default tenant as shown below:
      * 
@@ -17,11 +14,11 @@ namespace Abp.CMS.SampleApp.NHibernate.TestDatas
      */
     public class InitialTestChannelsBuilder
     {
-        private readonly ISession _session;
+        private readonly AppDbContext _context;
 
-        public InitialTestChannelsBuilder(ISession session)
+        public InitialTestChannelsBuilder(AppDbContext context)
         {
-            _session = session;
+            _context = context;
         }
 
         public void Build()
@@ -42,8 +39,8 @@ namespace Abp.CMS.SampleApp.NHibernate.TestDatas
 
         private Channels.Channel CreateOU(string displayName, string code, long? parentId = null)
         {
-            var ou = new Channels.Channel(1, displayName, parentId) {Code = code};
-            _session.Save(ou);
+            var ou = _context.Channels.Add(new Channels.Channel(0, displayName, parentId) { Code = code });
+            _context.SaveChanges();
             return ou;
         }
     }

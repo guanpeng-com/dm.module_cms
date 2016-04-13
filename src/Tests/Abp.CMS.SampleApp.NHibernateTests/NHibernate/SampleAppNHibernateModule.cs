@@ -9,7 +9,7 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace Abp.CMS.SampleApp.NHibernate
 {
-    [DependsOn(typeof(AbpCMSNHibernateModule), typeof(SampleAppModule))]
+    [DependsOn(typeof(AbpCMSNHibernateModule))]
     public class SampleAppNHibernateModule : AbpModule
     {
         public override void PreInitialize()

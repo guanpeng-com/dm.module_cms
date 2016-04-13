@@ -1,5 +1,4 @@
-﻿using Abp.MultiTenancy;
-using Abp.CMS.SampleApp.Users;
+﻿using Abp.CMS.SampleApp.Users;
 
 namespace Abp.CMS.SampleApp.MultiTenancy
 {
