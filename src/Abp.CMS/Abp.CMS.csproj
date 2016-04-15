@@ -86,18 +86,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Channel\IMustHaveChannel.cs" />
-    <Compile Include="Channel\IMayHaveChannel.cs" />
-    <Compile Include="Channel\Channel.cs" />
-    <Compile Include="Channel\ChannelManager.cs" />
-    <Compile Include="Channel\ChannelSettings.cs" />
+    <Compile Include="Apps\App.cs" />
+    <Compile Include="Apps\AppManager.cs" />
+    <Compile Include="Channels\Channel.cs" />
+    <Compile Include="Channels\ChannelManager.cs" />
+    <Compile Include="Channels\ChannelSettings.cs" />
+    <Compile Include="Channels\IMayHaveChannel.cs" />
+    <Compile Include="Channels\IMustHaveChannel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CMS\AbpCMSConsts.cs" />
     <Compile Include="CMS\AbpCMSCoreModule.cs" />
     <Compile Include="CMS\Configuration\AbpCMSSettingNames.cs" />
     <Compile Include="CMS\Configuration\AbpCMSSettingProvider.cs" />
     <Compile Include="CMS\Configuration\IAbpCMSConfig.cs" />
-    <Compile Include="Channel\IChannelSettings.cs" />
+    <Compile Include="Channels\IChannelSettings.cs" />
     <Compile Include="CMS\Configuration\ModuleCMSConfigurationExtensions.cs" />
     <Compile Include="CMS\Configuration\AbpCMSConfig.cs" />
   </ItemGroup>

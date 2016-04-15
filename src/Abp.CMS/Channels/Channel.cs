@@ -11,10 +11,10 @@ using Abp.Extensions;
 namespace Abp.Channels
 {
     /// <summary>
-    /// Represents an organization unit (OU).
+    /// Represents an Channel.
     /// </summary>
-    [Table("AbpChannels")]
-    public class Channel : FullAuditedEntity<long>, IMayHaveTenant
+    [Table("dm_Channels")]
+    public class Channel : FullAuditedEntity<long>, IMustHaveTenant
     {
         /// <summary>
         /// Maximum length of the <see cref="DisplayName"/> property.
@@ -22,7 +22,7 @@ namespace Abp.Channels
         public const int MaxDisplayNameLength = 128;
 
         /// <summary>
-        /// Maximum depth of an UO hierarchy.
+        /// Maximum depth of an channel hierarchy.
         /// </summary>
         public const int MaxDepth = 16;
 
@@ -39,7 +39,7 @@ namespace Abp.Channels
         /// <summary>
         /// TenantId of this entity.
         /// </summary>
-        public virtual int? TenantId { get; set; }
+        public virtual int TenantId { get; set; }
 
         /// <summary>
         /// Parent <see cref="Channel"/>.
@@ -81,7 +81,7 @@ namespace Abp.Channels
         /// </summary>
         public Channel()
         {
-            
+
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Abp.Channels
         /// <param name="tenantId">Tenant's Id or null for host.</param>
         /// <param name="displayName">Display name.</param>
         /// <param name="parentId">Parent's Id or null if OU is a root.</param>
-        public Channel(int? tenantId, string displayName, long? parentId = null)
+        public Channel(int tenantId, string displayName, long? parentId = null)
         {
             TenantId = tenantId;
             DisplayName = displayName;

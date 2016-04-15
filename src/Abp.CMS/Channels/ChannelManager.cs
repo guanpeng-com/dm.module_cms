@@ -11,19 +11,32 @@ using Abp.CMS;
 namespace Abp.Channels
 {
     /// <summary>
-    /// Performs domain logic for Organization Units.
+    /// 领域逻辑：栏目
     /// </summary>
     public class ChannelManager : DomainService
     {
+        /// <summary>
+        /// 栏目仓储
+        /// </summary>
         protected IRepository<Channel, long> channelRepository { get; private set; }
 
+        /// <summary>
+        /// 默认栏目名称
+        /// </summary>
         public const string DefaultChannelName = "";
+
+        /// <summary>
+        ///  默认栏目父级ID
+        /// </summary>
         public const int DefaultParentId = 0;
 
-        public ChannelManager(IRepository<Channel, long> ChannelRepository)
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="channelRepository"></param>
+        public ChannelManager(IRepository<Channel, long> channelRepository)
         {
-            channelRepository = ChannelRepository;
-
+            this.channelRepository = channelRepository;
             LocalizationSourceName = AbpCMSConsts.LocalizationSourceName;
         }
 
