@@ -52,6 +52,15 @@ namespace Abp.Apps
         }
 
         /// <summary>
+        /// 获取默认APP
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<App> FindDefaultApp()
+        {
+            return await appRepository.FirstOrDefaultAsync(a => a.Id > 0);
+        }
+
+        /// <summary>
         ///  校验应用
         /// </summary>
         /// <param name="app"></param>

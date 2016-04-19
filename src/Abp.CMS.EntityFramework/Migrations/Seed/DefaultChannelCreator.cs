@@ -22,7 +22,8 @@ namespace Abp.CMS.EntityFramework.Migrations.Seed
             var defaultChannel = _context.Channels.FirstOrDefault(e => e.Id > 0);
             if (defaultChannel == null)
             {
-                defaultChannel = new Channel { ParentId = ChannelManager.DefaultParentId, DisplayName = ChannelManager.DefaultChannelName };
+                var defaultApp = _context.Apps.FirstOrDefault(a => a.Id > 0);
+                defaultChannel = new Channel { ParentId = ChannelManager.DefaultParentId, DisplayName = ChannelManager.DefaultChannelName, AppId = defaultApp.Id };
                 _context.Channels.Add(defaultChannel);
                 _context.SaveChanges();
 

@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 using Abp.CMS;
 
-[assembly: AssemblyTitle("ASP.NET Boilerplate - Iteration CMS")]
-[assembly: AssemblyDescription("ASP.NET Boilerplate - Iteration CMS")]
+[assembly: AssemblyTitle("DM - Iteration CMS")]
+[assembly: AssemblyDescription("DM - Iteration CMS")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ASP.NET Boilerplate")]
+[assembly: AssemblyCompany("DM")]
 [assembly: AssemblyProduct("Abp.CMS")]
 [assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]

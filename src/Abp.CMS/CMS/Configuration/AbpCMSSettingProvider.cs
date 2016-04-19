@@ -11,9 +11,9 @@ namespace Abp.CMS.Configuration
             return new List<SettingDefinition>
                    {
                        new SettingDefinition(
-                           AbpCMSSettingNames.Channel.MaxUserMembershipCount,
+                           AbpCMSSettingNames.Channel.MaxContentCount,
                            int.MaxValue.ToString(),
-                           new FixedLocalizableString("Maximum allowed channel membership count for a user."),
+                           new FixedLocalizableString("Maximum allowed channel content count for a user."),
                            scopes: SettingScopes.Application | SettingScopes.Tenant,
                            isVisibleToClients: true
                            )

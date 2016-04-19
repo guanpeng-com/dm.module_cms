@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -88,6 +88,8 @@
   <ItemGroup>
     <Compile Include="Apps\App.cs" />
     <Compile Include="Apps\AppManager.cs" />
+    <Compile Include="Apps\IMayHaveApp.cs" />
+    <Compile Include="Apps\IMustHaveApp.cs" />
     <Compile Include="Channels\Channel.cs" />
     <Compile Include="Channels\ChannelManager.cs" />
     <Compile Include="Channels\ChannelSettings.cs" />

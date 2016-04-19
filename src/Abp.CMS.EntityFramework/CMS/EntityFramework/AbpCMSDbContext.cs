@@ -5,6 +5,7 @@ using Abp.EntityFramework;
 using Abp.EntityFramework.Extensions;
 using Abp.Notifications;
 using Abp.Channels;
+using Abp.Apps;
 
 namespace Abp.CMS.EntityFramework
 {
@@ -14,16 +15,21 @@ namespace Abp.CMS.EntityFramework
     public abstract class AbpCMSDbContext : AbpDbContext
     {
         /// <summary>
+        /// Apps
+        /// </summary>
+        public virtual IDbSet<App> Apps { get; set; }
+
+        /// <summary>
         /// Channels.
         /// </summary>
-        public virtual IDbSet<Channels.Channel> Channels { get; set; }
+        public virtual IDbSet<Channel> Channels { get; set; }
 
         /// <summary>
         /// Default constructor.
         /// Do not directly instantiate this class. Instead, use dependency injection!
         /// </summary>
         protected AbpCMSDbContext()
-            :base("Default")
+            : base("Default")
         {
 
         }

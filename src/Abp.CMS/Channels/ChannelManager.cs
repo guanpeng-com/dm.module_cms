@@ -40,6 +40,11 @@ namespace Abp.Channels
             LocalizationSourceName = AbpCMSConsts.LocalizationSourceName;
         }
 
+        /// <summary>
+        /// 创建栏目
+        /// </summary>
+        /// <param name="Channel"></param>
+        /// <returns></returns>
         [UnitOfWork]
         public virtual async Task CreateAsync(Channel Channel)
         {
@@ -48,12 +53,22 @@ namespace Abp.Channels
             await channelRepository.InsertAsync(Channel);
         }
 
+        /// <summary>
+        /// 更新栏目
+        /// </summary>
+        /// <param name="Channel"></param>
+        /// <returns></returns>
         public virtual async Task UpdateAsync(Channel Channel)
         {
             await ValidateChannelAsync(Channel);
             await channelRepository.UpdateAsync(Channel);
         }
 
+        /// <summary>
+        /// 获取下一级子栏目的编码
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
         public virtual async Task<string> GetNextChildCodeAsync(long? parentId)
         {
             var lastChild = await GetLastChildOrNullAsync(parentId);
@@ -66,6 +81,11 @@ namespace Abp.Channels
             return Channel.CalculateNextCode(lastChild.Code);
         }
 
+        /// <summary>
+        /// 获取子集的最后一个栏目
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
         public virtual async Task<Channel> GetLastChildOrNullAsync(long? parentId)
         {
             var children = await channelRepository.GetAllListAsync(ou => ou.ParentId == parentId);
@@ -83,6 +103,11 @@ namespace Abp.Channels
             return (await channelRepository.GetAsync(id)).Code;
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [UnitOfWork]
         public virtual async Task DeleteAsync(long id)
         {
@@ -96,6 +121,12 @@ namespace Abp.Channels
             await channelRepository.DeleteAsync(id);
         }
 
+        /// <summary>
+        /// 移动栏目
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
         [UnitOfWork]
         public virtual async Task MoveAsync(long id, long? parentId)
         {

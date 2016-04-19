@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Abp.Apps
 {
+    /// <summary>
+    /// 应用
+    /// </summary>
     [Table("dm_Apps")]
     public class App : FullAuditedEntity<long>, IMustHaveTenant
     {

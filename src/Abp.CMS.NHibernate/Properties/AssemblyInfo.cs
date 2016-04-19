@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 using Abp.CMS;
 
-[assembly: AssemblyTitle("ASP.NET Boilerplate - Iteration CMS - NHibernate Integration")]
-[assembly: AssemblyDescription("ASP.NET Boilerplate - Iteration CMS - NHibernate Integration")]
+[assembly: AssemblyTitle("DM - Iteration CMS - NHibernate Integration")]
+[assembly: AssemblyDescription("DM - Iteration CMS - NHibernate Integration")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ASP.NET Boilerplate")]
+[assembly: AssemblyCompany("DM")]
 [assembly: AssemblyProduct("Abp.CMS.NHibernate")]
 [assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]

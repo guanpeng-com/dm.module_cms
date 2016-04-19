@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using Abp.Apps;
+using Abp.Channels;
+using System.Data.Entity;
 
 namespace Abp.CMS.EntityFramework
 {
@@ -17,8 +19,8 @@ namespace Abp.CMS.EntityFramework
         {
             prefix = prefix ?? "";
 
-            modelBuilder.Entity<Channels.Channel>().ToTable(prefix + "Channels");
-
+            modelBuilder.Entity<Channel>().ToTable(prefix + "Channels");
+            modelBuilder.Entity<App>().ToTable(prefix + "Apps");
         }
     }
 }

@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 using Abp.CMS;
 
-[assembly: AssemblyTitle("ASP.NET Boilerplate - Iteration CMS - EntityFramework Integration")]
-[assembly: AssemblyDescription("ASP.NET Boilerplate - Iteration CMS - EntityFramework Integration")]
+[assembly: AssemblyTitle("DM - Iteration CMS - EntityFramework Integration")]
+[assembly: AssemblyDescription("DM - Iteration CMS - EntityFramework Integration")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ASP.NET Boilerplate")]
+[assembly: AssemblyCompany("DM")]
 [assembly: AssemblyProduct("Abp.CMS.EntityFramework")]
 [assembly: AssemblyCopyright("Copyright © 2014")]
 [assembly: AssemblyTrademark("")]

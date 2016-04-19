@@ -7,6 +7,7 @@ using Abp.Collections.Extensions;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Abp.Extensions;
+using Abp.Apps;
 
 namespace Abp.Channels
 {
@@ -14,7 +15,7 @@ namespace Abp.Channels
     /// Represents an Channel.
     /// </summary>
     [Table("dm_Channels")]
-    public class Channel : FullAuditedEntity<long>, IMustHaveTenant
+    public class Channel : FullAuditedEntity<long>, IMustHaveApp
     {
         /// <summary>
         /// Maximum length of the <see cref="DisplayName"/> property.
@@ -37,9 +38,9 @@ namespace Abp.Channels
         public const int MaxCodeLength = MaxDepth * (CodeUnitLength + 1) - 1;
 
         /// <summary>
-        /// TenantId of this entity.
+        /// AppId of this entity.
         /// </summary>
-        public virtual int TenantId { get; set; }
+        public virtual long AppId { get; set; }
 
         /// <summary>
         /// Parent <see cref="Channel"/>.
@@ -87,12 +88,12 @@ namespace Abp.Channels
         /// <summary>
         /// Initializes a new instance of the <see cref="Channel"/> class.
         /// </summary>
-        /// <param name="tenantId">Tenant's Id or null for host.</param>
+        /// <param name="appId">AppId's Id or null for app.</param>
         /// <param name="displayName">Display name.</param>
         /// <param name="parentId">Parent's Id or null if OU is a root.</param>
-        public Channel(int tenantId, string displayName, long? parentId = null)
+        public Channel(int appId, string displayName, long? parentId = null)
         {
-            TenantId = tenantId;
+            AppId = appId;
             DisplayName = displayName;
             ParentId = parentId;
         }

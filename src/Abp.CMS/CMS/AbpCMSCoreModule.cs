@@ -17,8 +17,11 @@ namespace Abp.CMS
         /// <summary>
         /// Current version of the CMS module.
         /// </summary>
-        public const string CurrentVersion = "0.1.0.0";
+        public const string CurrentVersion = "1.0.0.0";
 
+        /// <summary>
+        /// 预加载
+        /// </summary>
         public override void PreInitialize()
         {
             IocManager.Register<IAbpCMSConfig, AbpCMSConfig>();
@@ -33,6 +36,9 @@ namespace Abp.CMS
                         )));
         }
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
