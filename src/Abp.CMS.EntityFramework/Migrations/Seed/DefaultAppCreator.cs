@@ -1,3 +1,4 @@
+using Abp.Apps;
 using Abp.Channels;
 using System.Linq;
 
@@ -22,7 +23,7 @@ namespace Abp.CMS.EntityFramework.Migrations.Seed
             var defaultApp = _context.Apps.FirstOrDefault(e => e.Id > 0);
             if (defaultApp == null)
             {
-                defaultApp = new Apps.App { AppName = "cms", AppDir = "cms", AppUrl = "/cms" };
+                defaultApp = new Apps.App { AppName = App.DefaultName, AppDir = App.DefaultDir, AppUrl = "/" + App.DefaultDir };
                 _context.Apps.Add(defaultApp);
                 _context.SaveChanges();
 

@@ -2,15 +2,15 @@
 
 namespace Abp.CMS.SampleApp.Tests.TestDatas
 {
-    /* Creates OU tree for default tenant as shown below:
+    /* Creates CH tree for default tenant as shown below:
      * 
-     * - OU1
-     *   - OU11
-     *     - OU111
-     *     - OU112
-     *   - OU12
-     * - OU2
-     *   - OU21
+     * - CH1
+     *   - CH11
+     *     - CH111
+     *     - CH112
+     *   - CH12
+     * - CH2
+     *   - CH21
      */
     public class InitialTestChannelsBuilder
     {
@@ -23,25 +23,25 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
 
         public void Build()
         {
-            CreateOUs();
+            CreateCHs();
         }
 
-        private void CreateOUs()
+        private void CreateCHs()
         {
-            var ou1 = CreateOU("OU1", Channels.Channel.CreateCode(1));
-            var ou11 = CreateOU("OU11", Channels.Channel.CreateCode(1, 1), ou1.Id);
-            var ou111 = CreateOU("OU111", Channels.Channel.CreateCode(1, 1, 1), ou11.Id);
-            var ou112 = CreateOU("OU112", Channels.Channel.CreateCode(1, 1, 2), ou11.Id);
-            var ou12 = CreateOU("OU12", Channels.Channel.CreateCode(1, 2), ou1.Id);
-            var ou2 = CreateOU("OU2", Channels.Channel.CreateCode(2));
-            var ou21 = CreateOU("OU21", Channels.Channel.CreateCode(2, 1), ou2.Id);
+            var CH1 = CreateCH("CH1", Channels.Channel.CreateCode(1));
+            var CH11 = CreateCH("CH11", Channels.Channel.CreateCode(1, 1), CH1.Id);
+            var CH111 = CreateCH("CH111", Channels.Channel.CreateCode(1, 1, 1), CH11.Id);
+            var CH112 = CreateCH("CH112", Channels.Channel.CreateCode(1, 1, 2), CH11.Id);
+            var CH12 = CreateCH("CH12", Channels.Channel.CreateCode(1, 2), CH1.Id);
+            var CH2 = CreateCH("CH2", Channels.Channel.CreateCode(2));
+            var CH21 = CreateCH("CH21", Channels.Channel.CreateCode(2, 1), CH2.Id);
         }
 
-        private Channels.Channel CreateOU(string displayName, string code, long? parentId = null)
+        private Channels.Channel CreateCH(string displayName, string code, long? parentId = null)
         {
-            var ou = _context.Channels.Add(new Channels.Channel(0, displayName, parentId) { Code = code });
+            var CH = _context.Channels.Add(new Channels.Channel(0, displayName, parentId) { Code = code });
             _context.SaveChanges();
-            return ou;
+            return CH;
         }
     }
 }

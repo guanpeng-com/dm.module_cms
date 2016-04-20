@@ -91,7 +91,7 @@ namespace Abp.Channels
         /// <param name="appId">AppId's Id or null for app.</param>
         /// <param name="displayName">Display name.</param>
         /// <param name="parentId">Parent's Id or null if OU is a root.</param>
-        public Channel(int appId, string displayName, long? parentId = null)
+        public Channel(long appId, string displayName, long? parentId = null)
         {
             AppId = appId;
             DisplayName = displayName;

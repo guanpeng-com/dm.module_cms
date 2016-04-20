@@ -13,15 +13,9 @@ namespace Abp.CMS.SampleApp.Tests
 {
     public abstract class SampleAppTestBase : AbpIntegratedTestBase
     {
-        protected readonly IPermissionManager PermissionManager;
-        protected readonly IPermissionChecker PermissionChecker;
-
         protected SampleAppTestBase()
         {
             CreateInitialData();
-
-            PermissionManager = Resolve<IPermissionManager>();
-            PermissionChecker = Resolve<IPermissionChecker>();
         }
 
         protected override void PreInitialize()

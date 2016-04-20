@@ -16,6 +16,9 @@ namespace Abp.Apps
     [Table("dm_Apps")]
     public class App : FullAuditedEntity<long>, IMustHaveTenant
     {
+        public const string DefaultName = "Main";
+        public const string DefaultDir = "Main";
+
         /// <summary>
         /// <see cref="AppName" />的最大长度
         /// </summary>
