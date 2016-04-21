@@ -29,7 +29,6 @@ namespace Abp.CMS.EntityFramework
         /// Do not directly instantiate this class. Instead, use dependency injection!
         /// </summary>
         protected AbpCMSDbContext()
-            : base("Default")
         {
 
         }

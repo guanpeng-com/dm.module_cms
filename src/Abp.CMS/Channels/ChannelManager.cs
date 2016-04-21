@@ -18,7 +18,7 @@ namespace Abp.Channels
         /// <summary>
         /// 栏目仓储
         /// </summary>
-        protected IRepository<Channel, long> channelRepository { get; private set; }
+        protected IRepository<Channel, long> ChannelRepository { get; private set; }
 
         /// <summary>
         /// 默认栏目名称
@@ -36,7 +36,7 @@ namespace Abp.Channels
         /// <param name="channelRepository"></param>
         public ChannelManager(IRepository<Channel, long> channelRepository)
         {
-            this.channelRepository = channelRepository;
+            ChannelRepository = channelRepository;
             LocalizationSourceName = AbpCMSConsts.LocalizationSourceName;
         }
 
@@ -50,7 +50,7 @@ namespace Abp.Channels
         {
             Channel.Code = await GetNextChildCodeAsync(Channel.ParentId);
             await ValidateChannelAsync(Channel);
-            await channelRepository.InsertAsync(Channel);
+            await ChannelRepository.InsertAsync(Channel);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Abp.Channels
         public virtual async Task UpdateAsync(Channel Channel)
         {
             await ValidateChannelAsync(Channel);
-            await channelRepository.UpdateAsync(Channel);
+            await ChannelRepository.UpdateAsync(Channel);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Abp.Channels
         /// <returns></returns>
         public virtual async Task<Channel> GetLastChildOrNullAsync(long? parentId)
         {
-            var children = await channelRepository.GetAllListAsync(ou => ou.ParentId == parentId);
+            var children = await ChannelRepository.GetAllListAsync(ou => ou.ParentId == parentId);
             return children.OrderBy(c => c.Code).LastOrDefault();
         }
 
@@ -100,7 +100,7 @@ namespace Abp.Channels
 
         public virtual async Task<string> GetCodeAsync(long id)
         {
-            return (await channelRepository.GetAsync(id)).Code;
+            return (await ChannelRepository.GetAsync(id)).Code;
         }
 
         /// <summary>
@@ -115,10 +115,10 @@ namespace Abp.Channels
 
             foreach (var child in children)
             {
-                await channelRepository.DeleteAsync(child);
+                await ChannelRepository.DeleteAsync(child);
             }
 
-            await channelRepository.DeleteAsync(id);
+            await ChannelRepository.DeleteAsync(id);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Abp.Channels
         [UnitOfWork]
         public virtual async Task MoveAsync(long id, long? parentId)
         {
-            var Channel = await channelRepository.GetAsync(id);
+            var Channel = await ChannelRepository.GetAsync(id);
             if (Channel.ParentId == parentId)
             {
                 return;
@@ -161,15 +161,15 @@ namespace Abp.Channels
             {
                 if (!parentId.HasValue)
                 {
-                    return await channelRepository.GetAllListAsync();
+                    return await ChannelRepository.GetAllListAsync();
                 }
 
                 var code = await GetCodeAsync(parentId.Value);
-                return await channelRepository.GetAllListAsync(ou => ou.Code.StartsWith(code) && ou.Id != parentId.Value);
+                return await ChannelRepository.GetAllListAsync(ou => ou.Code.StartsWith(code) && ou.Id != parentId.Value);
             }
             else
             {
-                return await channelRepository.GetAllListAsync(ou => ou.ParentId == parentId);
+                return await ChannelRepository.GetAllListAsync(ou => ou.ParentId == parentId);
             }
         }
 

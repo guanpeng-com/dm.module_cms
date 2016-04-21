@@ -19,7 +19,7 @@ namespace Abp.Apps
         /// <summary>
         /// 应用仓储
         /// </summary>
-        protected IRepository<App, long> appRepository { get; private set; }
+        protected IRepository<App, long> AppRepository { get; private set; }
 
         /// <summary>
         /// 构造函数
@@ -27,7 +27,7 @@ namespace Abp.Apps
         /// <param name="appRepository"></param>
         public AppManager(IRepository<App, long> appRepository)
         {
-            this.appRepository = appRepository;
+            AppRepository = appRepository;
             LocalizationSourceName = AbpCMSConsts.LocalizationSourceName;
         }
 
@@ -39,7 +39,7 @@ namespace Abp.Apps
         public virtual async Task CreateAsync(App app)
         {
             await ValidateAppAsync(app);
-            await appRepository.InsertAsync(app);
+            await AppRepository.InsertAsync(app);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Abp.Apps
         /// <returns></returns>
         public virtual async Task<List<App>> FindApp()
         {
-            return await appRepository.GetAllListAsync();
+            return await AppRepository.GetAllListAsync();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Abp.Apps
         /// <returns></returns>
         public virtual async Task<App> FindDefaultApp()
         {
-            return await appRepository.FirstOrDefaultAsync(a => a.Id > 0);
+            return await AppRepository.FirstOrDefaultAsync(a => a.Id > 0);
         }
 
         /// <summary>
