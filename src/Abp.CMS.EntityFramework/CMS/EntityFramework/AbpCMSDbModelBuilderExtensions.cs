@@ -17,7 +17,7 @@ namespace Abp.CMS.EntityFramework
         /// <param name="prefix">Table prefix, or null to clear prefix.</param>
         public static void ChangeAbpTablePrefix(this DbModelBuilder modelBuilder, string prefix)
         {
-            prefix = prefix ?? "";
+            prefix = prefix ?? "dm_";
 
             modelBuilder.Entity<Channel>().ToTable(prefix + "Channels");
             modelBuilder.Entity<App>().ToTable(prefix + "Apps");

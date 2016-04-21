@@ -23,7 +23,7 @@ namespace Abp.Channels
         /// <summary>
         /// 默认栏目名称
         /// </summary>
-        public const string DefaultChannelName = "";
+        public const string DefaultChannelName = "首页";
 
         /// <summary>
         ///  默认栏目父级ID
