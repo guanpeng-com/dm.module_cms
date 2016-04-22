@@ -104,6 +104,9 @@
     <Compile Include="CMS\EntityFramework\AbpCMSDbContext.cs" />
     <Compile Include="CMS\EntityFramework\AbpCMSDbModelBuilderExtensions.cs" />
     <Compile Include="CMS\EntityFramework\AbpCMSEntityFrameworkModule.cs" />
+    <Compile Include="EntityFramework\Repositories\AbpCMSRepositoryBase.cs" />
+    <Compile Include="EntityFramework\Repositories\ChannelRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\AppRepository.cs" />
     <Compile Include="Migrations\Seed\DefaultAppCreator.cs" />
     <Compile Include="Migrations\Seed\DefaultChannelCreator.cs" />
     <Compile Include="Migrations\Seed\InitialDbBuilder.cs" />

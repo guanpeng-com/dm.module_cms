@@ -19,8 +19,8 @@ namespace Abp.CMS.EntityFramework
         {
             prefix = prefix ?? "dm_";
 
-            modelBuilder.Entity<Channel>().ToTable(prefix + "Channels");
             modelBuilder.Entity<App>().ToTable(prefix + "Apps");
+            modelBuilder.Entity<Channel>().ToTable(prefix + "Channels");
         }
     }
 }

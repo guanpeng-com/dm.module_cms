@@ -8,6 +8,7 @@ using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Abp.Extensions;
 using Abp.Apps;
+using Abp.Dependency;
 
 namespace Abp.Channels
 {
