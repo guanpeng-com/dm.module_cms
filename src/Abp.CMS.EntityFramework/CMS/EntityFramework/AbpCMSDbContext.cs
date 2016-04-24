@@ -6,13 +6,14 @@ using Abp.EntityFramework.Extensions;
 using Abp.Notifications;
 using Abp.Channels;
 using Abp.Apps;
+using Abp.Dependency;
 
 namespace Abp.CMS.EntityFramework
 {
     /// <summary>
     /// DbContext for ABP CMS.
     /// </summary>
-    public abstract class AbpCMSDbContext : AbpDbContext
+    public class AbpCMSDbContext : AbpDbContext
     {
         /// <summary>
         /// Apps
@@ -28,7 +29,7 @@ namespace Abp.CMS.EntityFramework
         /// Default constructor.
         /// Do not directly instantiate this class. Instead, use dependency injection!
         /// </summary>
-        protected AbpCMSDbContext()
+        public AbpCMSDbContext()
         {
 
         }
@@ -37,7 +38,7 @@ namespace Abp.CMS.EntityFramework
         /// Constructor with connection string parameter.
         /// </summary>
         /// <param name="nameOrConnectionString">Connection string or a name in connection strings in configuration file</param>
-        protected AbpCMSDbContext(string nameOrConnectionString)
+        public AbpCMSDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
 
@@ -46,7 +47,7 @@ namespace Abp.CMS.EntityFramework
         /// <summary>
         /// This constructor can be used for unit tests.
         /// </summary>
-        protected AbpCMSDbContext(DbConnection dbConnection, bool contextOwnsConnection)
+        public AbpCMSDbContext(DbConnection dbConnection, bool contextOwnsConnection)
             : base(dbConnection, contextOwnsConnection)
         {
 
@@ -56,6 +57,16 @@ namespace Abp.CMS.EntityFramework
         {
             base.OnModelCreating(modelBuilder);
 
+        }
+
+        /// <summary>
+        /// 其他模块调用
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        public static void InitDbSet(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add<App>(new System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<App>());
+            modelBuilder.Configurations.Add<Channel>(new System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Channel>());
         }
     }
 }

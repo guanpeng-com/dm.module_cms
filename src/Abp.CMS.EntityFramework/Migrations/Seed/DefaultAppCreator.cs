@@ -20,6 +20,7 @@ namespace Abp.CMS.EntityFramework.Migrations.Seed
 
         private void CreateApps()
         {
+            
             var defaultApp = _context.Apps.FirstOrDefault(e => e.Id > 0);
             if (defaultApp == null)
             {

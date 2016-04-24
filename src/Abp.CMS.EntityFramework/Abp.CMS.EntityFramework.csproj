@@ -104,9 +104,11 @@
     <Compile Include="CMS\EntityFramework\AbpCMSDbContext.cs" />
     <Compile Include="CMS\EntityFramework\AbpCMSDbModelBuilderExtensions.cs" />
     <Compile Include="CMS\EntityFramework\AbpCMSEntityFrameworkModule.cs" />
-    <Compile Include="EntityFramework\Repositories\AbpCMSRepositoryBase.cs" />
-    <Compile Include="EntityFramework\Repositories\ChannelRepository.cs" />
-    <Compile Include="EntityFramework\Repositories\AppRepository.cs" />
+    <Compile Include="Migrations\201604240829178_Added_Apps_Entities.cs" />
+    <Compile Include="Migrations\201604240829178_Added_Apps_Entities.Designer.cs">
+      <DependentUpon>201604240829178_Added_Apps_Entities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seed\DefaultAppCreator.cs" />
     <Compile Include="Migrations\Seed\DefaultChannelCreator.cs" />
     <Compile Include="Migrations\Seed\InitialDbBuilder.cs" />
@@ -125,6 +127,11 @@
       <Project>{70D916F2-9BFF-43DA-B3F7-3E0655114D48}</Project>
       <Name>Abp.CMS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604240829178_Added_Apps_Entities.resx">
+      <DependentUpon>201604240829178_Added_Apps_Entities.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

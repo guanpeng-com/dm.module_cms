@@ -1,4 +1,5 @@
-﻿using EntityFramework.DynamicFilters;
+﻿using Abp.EntityFramework;
+using EntityFramework.DynamicFilters;
 
 namespace Abp.CMS.EntityFramework.Migrations.Seed
 {
