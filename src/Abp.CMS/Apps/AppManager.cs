@@ -43,6 +43,24 @@ namespace Abp.Apps
         }
 
         /// <summary>
+        ///  获取应用
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task<App> GetByIdAsync(long id)
+        {
+            return await AppRepository.GetAsync(id);
+        }
+
+        /// <summary>
+        ///  获取应用
+        /// </summary>
+        /// <returns></returns>
+        public virtual App GetById(long id)
+        {
+            return AppRepository.Get(id);
+        }
+
+        /// <summary>
         ///  获取应用集合
         /// </summary>
         /// <returns></returns>
@@ -55,9 +73,18 @@ namespace Abp.Apps
         /// 获取默认APP
         /// </summary>
         /// <returns></returns>
-        public virtual async Task<App> FindDefaultApp()
+        public virtual async Task<App> FindDefaultAppAsync()
         {
-            return await AppRepository.FirstOrDefaultAsync(a => a.Id > 0);
+            return await AppRepository.FirstOrDefaultAsync(a => a.AppName == App.DefaultName);
+        }
+
+        /// <summary>
+        /// 获取默认APP
+        /// </summary>
+        /// <returns></returns>
+        public virtual  App FindDefaultApp()
+        {
+            return  AppRepository.FirstOrDefault(a => a.AppName == App.DefaultName);
         }
 
         /// <summary>

@@ -104,6 +104,10 @@
     <Compile Include="Channels\IChannelSettings.cs" />
     <Compile Include="CMS\Configuration\ModuleCMSConfigurationExtensions.cs" />
     <Compile Include="CMS\Configuration\AbpCMSConfig.cs" />
+    <Compile Include="Runtime\Security\CMSAbpClaims.cs" />
+    <Compile Include="Runtime\Session\CMSAbpSession.cs" />
+    <Compile Include="Runtime\Session\CMSAbpSessionExtensions.cs" />
+    <Compile Include="Runtime\Session\ICMSAbpSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
