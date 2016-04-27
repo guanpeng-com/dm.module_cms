@@ -23,7 +23,7 @@ namespace Abp.CMS.SampleApp.Tests.Channel
         public async Task Should_Create_Root_CH()
         {
             //default app
-            var deraultApp = _AppManager.FindDefaultApp();
+            var deraultApp =await _AppManager.FindDefaultAsync();
 
             //Act
             await _ChannelManager.CreateAsync(new Channels.Channel(deraultApp.Id, "Root 1"));
@@ -38,7 +38,7 @@ namespace Abp.CMS.SampleApp.Tests.Channel
         public async Task Should_Create_Child_CH()
         {
             //default app
-            var deraultApp = _AppManager.FindDefaultApp();
+            var deraultApp = _AppManager.FindDefault();
 
             //Arrange
             var ou11 = GetCH("CH11");
@@ -57,7 +57,7 @@ namespace Abp.CMS.SampleApp.Tests.Channel
         public async Task Should_Not_Create_CH_With_Same_Name_In_Same_Level()
         {
             //default app
-            var deraultApp = _AppManager.FindDefaultApp();
+            var deraultApp = _AppManager.FindDefault();
 
             //Arrange
             var ou11 = GetCH("CH11");

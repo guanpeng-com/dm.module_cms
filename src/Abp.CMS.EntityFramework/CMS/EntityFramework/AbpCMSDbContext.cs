@@ -7,6 +7,7 @@ using Abp.Notifications;
 using Abp.Channels;
 using Abp.Apps;
 using Abp.Dependency;
+using Abp.Contents;
 
 namespace Abp.CMS.EntityFramework
 {
@@ -25,11 +26,18 @@ namespace Abp.CMS.EntityFramework
         /// </summary>
         public virtual IDbSet<Channel> Channels { get; set; }
 
+
+        /// <summary>
+        /// Channels.
+        /// </summary>
+        public virtual IDbSet<Content> Contents { get; set; }
+
         /// <summary>
         /// Default constructor.
         /// Do not directly instantiate this class. Instead, use dependency injection!
         /// </summary>
         public AbpCMSDbContext()
+            : base("Default")
         {
 
         }
@@ -57,16 +65,6 @@ namespace Abp.CMS.EntityFramework
         {
             base.OnModelCreating(modelBuilder);
 
-        }
-
-        /// <summary>
-        /// 其他模块调用
-        /// </summary>
-        /// <param name="modelBuilder"></param>
-        public static void InitDbSet(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Configurations.Add<App>(new System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<App>());
-            modelBuilder.Configurations.Add<Channel>(new System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Channel>());
         }
     }
 }

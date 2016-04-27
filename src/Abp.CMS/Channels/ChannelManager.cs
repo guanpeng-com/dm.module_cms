@@ -18,7 +18,7 @@ namespace Abp.Channels
         /// <summary>
         /// 栏目仓储
         /// </summary>
-        protected IRepository<Channel, long> ChannelRepository { get; private set; }
+        public IRepository<Channel, long> ChannelRepository { get; private set; }
 
         /// <summary>
         /// 默认栏目名称
@@ -92,12 +92,22 @@ namespace Abp.Channels
             return children.OrderBy(c => c.Code).LastOrDefault();
         }
 
+        /// <summary>
+        /// 获取栏目编码
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public virtual string GetCode(long id)
         {
             //TODO: Move to an extension class
             return AsyncHelper.RunSync(() => GetCodeAsync(id));
         }
 
+        /// <summary>
+        /// 获取栏目编码
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public virtual async Task<string> GetCodeAsync(long id)
         {
             return (await ChannelRepository.GetAsync(id)).Code;
@@ -155,6 +165,12 @@ namespace Abp.Channels
             }
         }
 
+        /// <summary>
+        /// 获取栏目子集
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <param name="recursive"></param>
+        /// <returns></returns>
         public async Task<List<Channel>> FindChildrenAsync(long? parentId, bool recursive = false)
         {
             if (recursive)
@@ -173,6 +189,22 @@ namespace Abp.Channels
             }
         }
 
+        /// <summary>
+        /// 获取栏目子集
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <param name="recursive"></param>
+        /// <returns></returns>
+        public async Task<Channel> FindDefaultAsync()
+        {
+            return await ChannelRepository.FirstOrDefaultAsync(c => c.DisplayName == DefaultChannelName);
+        }
+
+        /// <summary>
+        /// 校验栏目
+        /// </summary>
+        /// <param name="Channel"></param>
+        /// <returns></returns>
         protected virtual async Task ValidateChannelAsync(Channel Channel)
         {
             var siblings = (await FindChildrenAsync(Channel.ParentId))

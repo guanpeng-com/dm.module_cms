@@ -1,4 +1,8 @@
-﻿using Abp.CMS.SampleApp.EntityFramework;
+﻿using Abp.Apps;
+using Abp.Channels;
+using Abp.CMS.EntityFramework;
+using Abp.CMS.SampleApp.EntityFramework;
+using System.Linq;
 
 namespace Abp.CMS.SampleApp.Tests.TestDatas
 {
@@ -28,20 +32,39 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
 
         private void CreateCHs()
         {
-            var CH1 = CreateCH("CH1", Channels.Channel.CreateCode(1));
-            var CH11 = CreateCH("CH11", Channels.Channel.CreateCode(1, 1), CH1.Id);
-            var CH111 = CreateCH("CH111", Channels.Channel.CreateCode(1, 1, 1), CH11.Id);
-            var CH112 = CreateCH("CH112", Channels.Channel.CreateCode(1, 1, 2), CH11.Id);
-            var CH12 = CreateCH("CH12", Channels.Channel.CreateCode(1, 2), CH1.Id);
-            var CH2 = CreateCH("CH2", Channels.Channel.CreateCode(2));
-            var CH21 = CreateCH("CH21", Channels.Channel.CreateCode(2, 1), CH2.Id);
+            var defaultApp = _context.Apps.FirstOrDefault(e => e.Id > 0);
+            if (defaultApp == null)
+            {
+
+                defaultApp = new App
+                {
+                    AppName = App.DefaultName,
+                    AppDir = App.DefaultDir,
+                    AppUrl = "/" + App.DefaultDir,
+                    TenantId = 0
+                };
+                _context.Apps.Add(defaultApp);
+                _context.SaveChanges();
+            }
+
+
+            var defaultChannel = _context.Channels.FirstOrDefault(e => e.Id > 0);
+            if (defaultChannel == null)
+            {
+                defaultChannel = new Channels.Channel
+                {
+                    ParentId = null,
+                    DisplayName = ChannelManager.DefaultChannelName,
+                    AppId = defaultApp.Id,
+                    Code = Channels.Channel.CreateCode(0),
+                    Parent = null,
+                };
+
+                _context.Channels.Add(defaultChannel);
+                _context.SaveChanges();
+            }
         }
 
-        private Channels.Channel CreateCH(string displayName, string code, long? parentId = null)
-        {
-            var CH = _context.Channels.Add(new Channels.Channel(0, displayName, parentId) { Code = code });
-            _context.SaveChanges();
-            return CH;
-        }
+
     }
 }

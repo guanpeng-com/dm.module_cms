@@ -19,7 +19,7 @@ namespace Abp.Apps
         /// <summary>
         /// 应用仓储
         /// </summary>
-        protected IRepository<App, long> AppRepository { get; private set; }
+        public IRepository<App, long> AppRepository { get; private set; }
 
         /// <summary>
         /// 构造函数
@@ -73,7 +73,7 @@ namespace Abp.Apps
         /// 获取默认APP
         /// </summary>
         /// <returns></returns>
-        public virtual async Task<App> FindDefaultAppAsync()
+        public virtual async Task<App> FindDefaultAsync()
         {
             return await AppRepository.FirstOrDefaultAsync(a => a.AppName == App.DefaultName);
         }
@@ -82,9 +82,9 @@ namespace Abp.Apps
         /// 获取默认APP
         /// </summary>
         /// <returns></returns>
-        public virtual  App FindDefaultApp()
+        public virtual App FindDefault()
         {
-            return  AppRepository.FirstOrDefault(a => a.AppName == App.DefaultName);
+            return AppRepository.FirstOrDefault(a => a.AppName == App.DefaultName);
         }
 
         /// <summary>
