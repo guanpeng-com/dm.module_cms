@@ -92,11 +92,6 @@ namespace Abp.Templates
         [StringLength(MaxExtensionLength)]
         public virtual string Extension { get; set; }
 
-        /// <summary>
-        ///  模板正文
-        /// </summary>
-        public virtual string Content { get; set; }
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Template"/> class.
@@ -109,12 +104,11 @@ namespace Abp.Templates
         /// <summary>
         /// Initializes a new instance of the <see cref="Template"/> class.
         /// </summary>
-        public Template(long appId, string title, string name, string type, string content, string extension)
+        public Template(long appId, string title, string name, string type, string extension)
         {
             AppId = appId;
             Title = title;
             Name = name;
-            Content = content;
             Extension = extension;
         }
 

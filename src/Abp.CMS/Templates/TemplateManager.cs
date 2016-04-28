@@ -8,6 +8,7 @@ using Abp.CMS;
 using System;
 using Abp.Channels;
 using Abp.Apps;
+using Abp.UI;
 
 namespace Abp.Templates
 {
@@ -99,8 +100,29 @@ namespace Abp.Templates
             }
         }
 
+        /// <summary>
+        /// 校验模板
+        /// </summary>
+        /// <param name="template"></param>
+        /// <returns></returns>
         protected virtual async Task ValidateTemplateAsync(Template template)
         {
+            if (!template.Name.StartsWith("T_"))
+            {
+                throw new UserFriendlyException(L("TemplateNameMustStartWithT_"));
+            }
+
+            var siblings = (await TemplateRepository.GetAllListAsync(t => t.AppId == template.AppId && t.Id != template.Id));
+
+            if (siblings.Any(t => t.Title == template.Title))
+            {
+                throw new UserFriendlyException(L("TemplateDuplicateTitleWarning", template.Title));
+            }
+
+            if (siblings.Any(t => t.Name == template.Name))
+            {
+                throw new UserFriendlyException(L("TemplateDuplicateNameWarning", template.Name));
+            }
 
         }
 
