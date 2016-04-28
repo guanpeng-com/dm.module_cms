@@ -16,8 +16,8 @@ namespace Abp.CMS.EntityFramework.Migrations.Seed
         {
             _context.DisableAllFilters();
 
-            new DefaultAppCreator(_context).Create();
-            new DefaultChannelCreator(_context).Create();
+            new DefaultAppChannelCreator(_context).Create();
+            new DefaultTemplateCreator(_context).Create();
 
             _context.SaveChanges();
         }

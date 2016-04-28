@@ -109,8 +109,8 @@
       <DependentUpon>201604240829178_Added_Apps_Entities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\Seed\DefaultAppCreator.cs" />
-    <Compile Include="Migrations\Seed\DefaultChannelCreator.cs" />
+    <Compile Include="Migrations\Seed\DefaultAppChannelCreator.cs" />
+    <Compile Include="Migrations\Seed\DefaultTemplateCreator.cs" />
     <Compile Include="Migrations\Seed\InitialDbBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityFramework\Extensions\EntityFrameworkModelBuilderExtensions.cs" />

@@ -8,6 +8,7 @@ using Abp.Channels;
 using Abp.Apps;
 using Abp.Dependency;
 using Abp.Contents;
+using Abp.Templates;
 
 namespace Abp.CMS.EntityFramework
 {
@@ -31,6 +32,11 @@ namespace Abp.CMS.EntityFramework
         /// Channels.
         /// </summary>
         public virtual IDbSet<Content> Contents { get; set; }
+
+        /// <summary>
+        /// Template.
+        /// </summary>
+        public virtual IDbSet<Template> Templates { get; set; }
 
         /// <summary>
         /// Default constructor.

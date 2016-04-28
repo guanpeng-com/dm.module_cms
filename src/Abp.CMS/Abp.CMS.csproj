@@ -95,6 +95,8 @@
     <Compile Include="Channels\ChannelSettings.cs" />
     <Compile Include="Channels\IMayHaveChannel.cs" />
     <Compile Include="Channels\IMustHaveChannel.cs" />
+    <Compile Include="Templates\Template.cs" />
+    <Compile Include="Templates\TemplateManager.cs" />
     <Compile Include="Contents\Content.cs" />
     <Compile Include="Contents\ContentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
