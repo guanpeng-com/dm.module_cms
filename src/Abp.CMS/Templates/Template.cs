@@ -110,6 +110,7 @@ namespace Abp.Templates
             Title = title;
             Name = name;
             Extension = extension;
+            Type = type;
         }
 
         /// <summary>

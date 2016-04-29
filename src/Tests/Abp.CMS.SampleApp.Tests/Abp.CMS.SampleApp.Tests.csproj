@@ -137,6 +137,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Templates\TemplateManager_Tests.cs" />
+    <Compile Include="Templates\Template_Tests.cs" />
     <Compile Include="Contents\ContentManager_Tests.cs" />
     <Compile Include="Contents\Content_Tests.cs" />
     <Compile Include="Channels\ChannelManager_Tests.cs" />
