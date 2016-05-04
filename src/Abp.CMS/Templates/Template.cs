@@ -10,6 +10,9 @@ using Abp.Extensions;
 using Abp.Apps;
 using Abp.Dependency;
 using Abp.Channels;
+using Abp.IO;
+using System.IO;
+using Abp.Core.Enums;
 
 namespace Abp.Templates
 {
@@ -27,11 +30,6 @@ namespace Abp.Templates
         public const string ContentDefaultTitle = "默认内容模板";
 
         public const string DefaultExtension = ".html";
-
-        public const string Type_Index = "Index";
-        public const string Type_Channel = "Channle";
-        public const string Type_Content = "Content";
-        public const string Type_File = "File";
 
         /// <summary>
         /// Maximum length of the <see cref="Extension"/> property.
@@ -121,7 +119,7 @@ namespace Abp.Templates
         {
             this.Title = IndexDefaultTitle;
             this.Name = IndexDefaultName;
-            this.Type = Type_Index;
+            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.Index);
             this.AppId = appId;
             this.Extension = DefaultExtension;
         }
@@ -134,7 +132,7 @@ namespace Abp.Templates
         {
             this.Title = ChannelDefaultTitle;
             this.Name = ChannelDefaultName;
-            this.Type = Type_Channel;
+            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.Channel);
             this.AppId = appId;
             this.Extension = DefaultExtension;
         }
@@ -147,7 +145,7 @@ namespace Abp.Templates
         {
             this.Title = ContentDefaultTitle;
             this.Name = ContentDefaultName;
-            this.Type = Type_Content;
+            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.Content);
             this.AppId = appId;
             this.Extension = DefaultExtension;
         }

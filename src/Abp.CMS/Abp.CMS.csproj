@@ -79,6 +79,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -95,6 +96,13 @@
     <Compile Include="Channels\ChannelSettings.cs" />
     <Compile Include="Channels\IMayHaveChannel.cs" />
     <Compile Include="Channels\IMustHaveChannel.cs" />
+    <Compile Include="Core\Enums\ETemplateType.cs" />
+    <Compile Include="Core\IO\DirectoryUtils.cs" />
+    <Compile Include="Core\Utils\PageUtils.cs" />
+    <Compile Include="Core\Utils\PathUtils.cs" />
+    <Compile Include="Core\Utils\RegexUtils.cs" />
+    <Compile Include="Core\Utils\StringUtils.cs" />
+    <Compile Include="Core\Utils\TranslateUtils.cs" />
     <Compile Include="Templates\Template.cs" />
     <Compile Include="Templates\TemplateManager.cs" />
     <Compile Include="Contents\Content.cs" />
@@ -112,6 +120,8 @@
     <Compile Include="Runtime\Session\CMSAbpSession.cs" />
     <Compile Include="Runtime\Session\CMSAbpSessionExtensions.cs" />
     <Compile Include="Runtime\Session\ICMSAbpSession.cs" />
+    <Compile Include="Core\Enums\ECharset.cs" />
+    <Compile Include="Core\IO\FileUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
