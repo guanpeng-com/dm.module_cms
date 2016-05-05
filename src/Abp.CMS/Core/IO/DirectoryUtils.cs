@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Abp.Core.IO
 {
@@ -14,9 +15,38 @@ namespace Abp.Core.IO
     /// </summary>
     public class DirectoryUtils
     {
-        public class aspnet_client
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        private DirectoryUtils(string physicalApplicationPath)
         {
-            public const string DirectoryName = "aspnet_client";
+            this.physicalApplicationPath = physicalApplicationPath;
+        }
+
+        private static DirectoryUtils directoryUtils;
+        /// <summary>
+        /// 实例
+        /// </summary>
+        public static DirectoryUtils Instance
+        {
+            get
+            {
+                if (directoryUtils == null && HttpContext.Current != null)
+                {
+                    string applicationPath = HttpContext.Current.Request.ApplicationPath;
+                    directoryUtils = new DirectoryUtils(HttpContext.Current.Request.PhysicalApplicationPath);
+                }
+                return directoryUtils;
+            }
+        }
+
+        private string physicalApplicationPath;
+        /// <summary>
+        ///  物理根目录
+        /// </summary>
+        public string PhysicalApplicationPath
+        {
+            get { return physicalApplicationPath; }
         }
 
         public class Bin
@@ -24,14 +54,36 @@ namespace Abp.Core.IO
             public const string DirectoryName = "Bin";
         }
 
-        public class obj
+        /// <summary>
+        ///  模板相关的文件夹
+        /// </summary>
+        public class Template
         {
-            public const string DirectoryName = "obj";
+            /// <summary>
+            ///  首页模板文件夹
+            /// </summary>
+            public const string IndexTemplateDirName = "Index";
+            /// <summary>
+            ///  栏目模板文件夹
+            /// </summary>
+            public const string ChannelTemplateDirName = "Channel";
+            /// <summary>
+            ///  内容模板文件夹
+            /// </summary>
+            public const string ContentTemplateDirName = "Content";
+            /// <summary>
+            ///  单页模板文件夹
+            /// </summary>
+            public const string FileTemplateDirName = "File";
         }
 
-        public class WebConfig
+        public static bool IsSystemDirectory(string directoryName)
         {
-            public const string DirectoryName = "Web.config";
+            if (StringUtils.EqualsIgnoreCase(directoryName, DirectoryUtils.Bin.DirectoryName))
+            {
+                return true;
+            }
+            return false;
         }
 
         public static char DirectorySeparatorChar = Path.DirectorySeparatorChar;
@@ -389,16 +441,6 @@ namespace Abp.Core.IO
             return size;
         }
 
-        public static bool IsSystemDirectory(string directoryName)
-        {
-            if (StringUtils.EqualsIgnoreCase(directoryName, DirectoryUtils.aspnet_client.DirectoryName)
-                || StringUtils.EqualsIgnoreCase(directoryName, DirectoryUtils.Bin.DirectoryName)
-                || StringUtils.EqualsIgnoreCase(directoryName, "obj")
-                || StringUtils.EqualsIgnoreCase(directoryName, "Properties"))
-            {
-                return true;
-            }
-            return false;
-        }
+
     }
 }

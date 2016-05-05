@@ -5,7 +5,7 @@ using Abp.UI;
 using Shouldly;
 using Xunit;
 using Abp.Apps;
-using Abp.Utils.Enums;
+using Abp.Core.Enums;
 
 namespace Abp.CMS.SampleApp.Tests.Template
 {
@@ -26,7 +26,9 @@ namespace Abp.CMS.SampleApp.Tests.Template
             //default app
             var deraultApp = await _appManager.FindDefaultAsync();
             //Act
-            await _templateManager.CreateAsync(new Templates.Template(deraultApp.Id, "test", "T_test", ETemplateTypeUtils.GetValue(ETemplateType.File), Templates.Template.DefaultExtension));
+            var t = new Templates.Template(deraultApp.Id, "test", "T_test", ETemplateTypeUtils.GetValue(ETemplateType.FileTemplate), Templates.Template.DefaultExtension);
+            t.TemplateContent = "123123";
+            await _templateManager.CreateAsync(t);
 
             //Assert
             var root1 = GetTemplateOrNull("test");

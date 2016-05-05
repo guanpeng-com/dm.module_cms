@@ -29,5 +29,13 @@
     <text name="CanNotDeleteStaticRole" value="不能删除系统预定义角色: {0}" />
     <text name="CanNotRenameAdminUser" value="不能重命名默认管理员的用户名 {0}" />
     <text name="CanNotDeleteAdminUser" value="不能删除默认管理员{0}!" />
+
+
+    <!--CMS STAET-->
+    <text name="IndexTemplate" value="首页模板"></text>
+    <text name="ChannelTemplate" value="栏目模板"></text>
+    <text name="ContentTemplate" value="内容模板"></text>
+    <text name="FileTemplate" value="单页模板"></text>
+    <!--CMS END-->
   </texts>
 </localizationDictionary>

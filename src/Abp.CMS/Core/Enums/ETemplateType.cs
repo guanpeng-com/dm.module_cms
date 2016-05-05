@@ -1,4 +1,7 @@
-﻿using Abp.Domain.Services;
+﻿using Abp.CMS;
+using Abp.Dependency;
+using Abp.Domain.Services;
+using Abp.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +18,19 @@ namespace Abp.Core.Enums
         /// <summary>
         /// 首页模板
         /// </summary>
-        Index,
+        IndexTemplate,
         /// <summary>
         /// 栏目模板
         /// </summary>
-        Channel,
+        ChannelTemplate,
         /// <summary>
         /// 内容模板
         /// </summary>
-        Content,
+        ContentTemplate,
         /// <summary>
         /// 单页模板
         /// </summary>
-        File
+        FileTemplate
     }
 
     /// <summary>
@@ -44,16 +47,16 @@ namespace Abp.Core.Enums
         {
             switch (type)
             {
-                case ETemplateType.Index:
-                    return "Index";
-                case ETemplateType.Channel:
-                    return "Channel";
-                case ETemplateType.Content:
-                    return "Content";
-                case ETemplateType.File:
-                    return "File";
+                case ETemplateType.IndexTemplate:
+                    return "IndexTemplate";
+                case ETemplateType.ChannelTemplate:
+                    return "ChannelTemplate";
+                case ETemplateType.ContentTemplate:
+                    return "ContentTemplate";
+                case ETemplateType.FileTemplate:
+                    return "FileTemplate";
                 default:
-                    return "File";
+                    return "FileTemplate";
             }
         }
 
@@ -64,19 +67,7 @@ namespace Abp.Core.Enums
         /// <returns></returns>
         public static string GetText(ETemplateType type)
         {
-            switch (type)
-            {
-                case ETemplateType.Index:
-                    return GetValue(ETemplateType.Index);
-                case ETemplateType.Channel:
-                    return GetValue(ETemplateType.Channel);
-                case ETemplateType.Content:
-                    return GetValue(ETemplateType.Content);
-                case ETemplateType.File:
-                    return GetValue(ETemplateType.File);
-                default:
-                    return GetValue(ETemplateType.File);
-            }
+            return L(GetValue(type));
         }
 
         /// <summary>
@@ -88,16 +79,16 @@ namespace Abp.Core.Enums
         {
             switch (typeStr)
             {
-                case "Index":
-                    return ETemplateType.Index;
-                case "Channel":
-                    return ETemplateType.Channel;
-                case "Content":
-                    return ETemplateType.Content;
-                case "File":
-                    return ETemplateType.File;
+                case "IndexTemplate":
+                    return ETemplateType.IndexTemplate;
+                case "ChannelTemplate":
+                    return ETemplateType.ChannelTemplate;
+                case "ContentTemplate":
+                    return ETemplateType.ContentTemplate;
+                case "FileTemplate":
+                    return ETemplateType.FileTemplate;
                 default:
-                    return ETemplateType.File;
+                    return ETemplateType.FileTemplate;
             }
         }
 
@@ -135,11 +126,22 @@ namespace Abp.Core.Enums
         public static string GetCtrlStr(ETemplateType? selected)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.Index), GetText(ETemplateType.Index), ETemplateType.Index == selected ? "selected='true'" : string.Empty);
-            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.Channel), GetText(ETemplateType.Channel), ETemplateType.Channel == selected ? "selected='true'" : string.Empty);
-            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.Content), GetText(ETemplateType.Content), ETemplateType.Content == selected ? "selected='true'" : string.Empty);
-            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.File), GetText(ETemplateType.File), ETemplateType.File == selected ? "selected='true'" : string.Empty);
+            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.IndexTemplate), GetText(ETemplateType.IndexTemplate), ETemplateType.IndexTemplate == selected ? "selected='true'" : string.Empty);
+            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.ChannelTemplate), GetText(ETemplateType.ChannelTemplate), ETemplateType.ChannelTemplate == selected ? "selected='true'" : string.Empty);
+            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.ContentTemplate), GetText(ETemplateType.ContentTemplate), ETemplateType.ContentTemplate == selected ? "selected='true'" : string.Empty);
+            sb.AppendFormat("<option value='{0}' {2}>{1}</option>", GetValue(ETemplateType.FileTemplate), GetText(ETemplateType.FileTemplate), ETemplateType.FileTemplate == selected ? "selected='true'" : string.Empty);
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// 本地化
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string L(string name)
+        {
+            ILocalizationManager localizationManager = IocManager.Instance.Resolve<ILocalizationManager>();
+            return localizationManager.GetString(AbpCMSConsts.LocalizationSourceName, name);
         }
     }
 }

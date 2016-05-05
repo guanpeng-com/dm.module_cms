@@ -1,4 +1,7 @@
-﻿using Abp.Core.Utils;
+﻿using Abp.CMS;
+using Abp.Core.Utils;
+using Abp.Dependency;
+using Abp.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,66 +96,70 @@ namespace Abp.Core.Enums
 
         public static string GetText(ECharset type)
         {
-            if (type == ECharset.utf_8)
-            {
-                return "Unicode (UTF-8)";
-            }
-            else if (type == ECharset.gb2312)
-            {
-                return "简体中文 (GB2312)";
-            }
-            else if (type == ECharset.big5)
-            {
-                return "繁体中文 (Big5)";
-            }
-            else if (type == ECharset.iso_8859_1)
-            {
-                return "西欧 (iso-8859-1)";
-            }
-            else if (type == ECharset.euc_kr)
-            {
-                return "韩文 (euc-kr)";
-            }
-            else if (type == ECharset.euc_jp)
-            {
-                return "日文 (euc-jp)";
-            }
-            else if (type == ECharset.iso_8859_6)
-            {
-                return "阿拉伯文 (iso-8859-6)";
-            }
-            else if (type == ECharset.windows_874)
-            {
-                return "泰文 (windows-874)";
-            }
-            else if (type == ECharset.iso_8859_9)
-            {
-                return "土耳其文 (iso-8859-9)";
-            }
-            else if (type == ECharset.iso_8859_5)
-            {
-                return "西里尔文 (iso-8859-5)";
-            }
-            else if (type == ECharset.iso_8859_8)
-            {
-                return "希伯来文 (iso-8859-8)";
-            }
-            else if (type == ECharset.iso_8859_7)
-            {
-                return "希腊文 (iso-8859-7)";
-            }
-            else if (type == ECharset.windows_1258)
-            {
-                return "越南文 (windows-1258)";
-            }
-            else if (type == ECharset.iso_8859_2)
-            {
-                return "中欧 (iso-8859-2)";
-            }
-            else
-            {
-                throw new Exception();
-            }
+            #region old
+            //if (type == ECharset.utf_8)
+            //{
+            //    return "Unicode (UTF-8)";
+            //}
+            //else if (type == ECharset.gb2312)
+            //{
+            //    return "简体中文 (GB2312)";
+            //}
+            //else if (type == ECharset.big5)
+            //{
+            //    return "繁体中文 (Big5)";
+            //}
+            //else if (type == ECharset.iso_8859_1)
+            //{
+            //    return "西欧 (iso-8859-1)";
+            //}
+            //else if (type == ECharset.euc_kr)
+            //{
+            //    return "韩文 (euc-kr)";
+            //}
+            //else if (type == ECharset.euc_jp)
+            //{
+            //    return "日文 (euc-jp)";
+            //}
+            //else if (type == ECharset.iso_8859_6)
+            //{
+            //    return "阿拉伯文 (iso-8859-6)";
+            //}
+            //else if (type == ECharset.windows_874)
+            //{
+            //    return "泰文 (windows-874)";
+            //}
+            //else if (type == ECharset.iso_8859_9)
+            //{
+            //    return "土耳其文 (iso-8859-9)";
+            //}
+            //else if (type == ECharset.iso_8859_5)
+            //{
+            //    return "西里尔文 (iso-8859-5)";
+            //}
+            //else if (type == ECharset.iso_8859_8)
+            //{
+            //    return "希伯来文 (iso-8859-8)";
+            //}
+            //else if (type == ECharset.iso_8859_7)
+            //{
+            //    return "希腊文 (iso-8859-7)";
+            //}
+            //else if (type == ECharset.windows_1258)
+            //{
+            //    return "越南文 (windows-1258)";
+            //}
+            //else if (type == ECharset.iso_8859_2)
+            //{
+            //    return "中欧 (iso-8859-2)";
+            //}
+            //else
+            //{
+            //    throw new Exception();
+            //} 
+            #endregion
+
+            return L(GetValue(type));
         }
 
         public static ECharset GetEnumType(string typeStr)
@@ -259,6 +266,17 @@ namespace Abp.Core.Enums
             {
                 return gb2312;
             }
+        }
+
+        /// <summary>
+        /// 本地化
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string L(string name)
+        {
+            ILocalizationManager localizationManager = IocManager.Instance.Resolve<ILocalizationManager>();
+            return localizationManager.GetString(AbpCMSConsts.LocalizationSourceName, name);
         }
 
     }

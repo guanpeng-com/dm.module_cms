@@ -9,6 +9,9 @@ using System;
 using Abp.Channels;
 using Abp.Apps;
 using Abp.UI;
+using Abp.Core.IO;
+using Abp.Core.Enums;
+using Abp.Core.Utils;
 
 namespace Abp.Templates
 {
@@ -52,6 +55,9 @@ namespace Abp.Templates
         {
             await ValidateTemplateAsync(Template);
             await TemplateRepository.InsertAsync(Template);
+
+            //保存文件
+            SaveAsTemplateFile(Template);
         }
 
         /// <summary>
@@ -63,6 +69,9 @@ namespace Abp.Templates
         {
             await ValidateTemplateAsync(Template);
             await TemplateRepository.UpdateAsync(Template);
+
+            //保存文件
+            SaveAsTemplateFile(Template);
         }
 
         /// <summary>
@@ -73,7 +82,11 @@ namespace Abp.Templates
         [UnitOfWork]
         public virtual async Task DeleteAsync(long id)
         {
+            Template template = TemplateRepository.Get(id);
             await TemplateRepository.DeleteAsync(id);
+
+            //删除文件
+            DeleteTemplateFile(template);
         }
 
         /// <summary>
@@ -84,19 +97,31 @@ namespace Abp.Templates
         /// <returns></returns>
         public async Task<List<Template>> FindTemplatesByTypeAsync(long appId, string type)
         {
+            List<Template> list = new List<Template>();
             if (string.IsNullOrEmpty(type))
             {
                 var query = from t in TemplateRepository.GetAll()
                             where t.AppId == appId
                             select t;
-                return await Task.FromResult(query.ToList<Template>());
+
+                query.ToList<Template>().ForEach(t =>
+                {
+                    t.TemplateContent = GetTemplateContent(t);
+                    list.Add(t);
+                });
+                return await Task.FromResult(list);
             }
             else
             {
                 var query = from t in TemplateRepository.GetAll()
                             where t.AppId == appId && t.Type == type
                             select t;
-                return await Task.FromResult(query.ToList<Template>());
+                query.ToList<Template>().ForEach(t =>
+                {
+                    t.TemplateContent = GetTemplateContent(t);
+                    list.Add(t);
+                });
+                return await Task.FromResult(list);
             }
         }
 
@@ -126,5 +151,62 @@ namespace Abp.Templates
 
         }
 
+        /// <summary>
+        /// 获取模板文件
+        /// </summary>
+        /// <param name="template"></param>
+        protected string GetTemplateContent(Template template)
+        {
+            if (template.TemplateContent == null) template.TemplateContent = string.Empty;
+            string filePath = GetTemplateFilePath(template);
+            return FileUtils.ReadText(filePath, ECharset.utf_8);
+        }
+
+        /// <summary>
+        /// 删除模板文件
+        /// </summary>
+        /// <param name="template"></param>
+        protected void DeleteTemplateFile(Template template)
+        {
+            string filePath = GetTemplateFilePath(template);
+            FileUtils.DeleteFileIfExists(filePath);
+        }
+
+
+        /// <summary>
+        /// 保存模板文件
+        /// </summary>
+        /// <param name="template"></param>
+        protected void SaveAsTemplateFile(Template template)
+        {
+            if (template.TemplateContent == null) template.TemplateContent = string.Empty;
+            string filePath = GetTemplateFilePath(template);
+            FileUtils.WriteText(filePath, ECharset.utf_8, template.TemplateContent);
+        }
+
+        /// <summary>
+        /// 获取模板文件路径
+        /// </summary>
+        /// <param name="template"></param>
+        /// <returns></returns>
+        protected string GetTemplateFilePath(Template template)
+        {
+            if (template.Type == ETemplateTypeUtils.GetValue(ETemplateType.IndexTemplate))
+            {
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.IndexTemplateDirName);
+            }
+            else if (template.Type == ETemplateTypeUtils.GetValue(ETemplateType.ChannelTemplate))
+            {
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.ChannelTemplateDirName);
+            }
+            else if (template.Type == ETemplateTypeUtils.GetValue(ETemplateType.ContentTemplate))
+            {
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.ContentTemplateDirName);
+            }
+            else
+            {
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.FileTemplateDirName);
+            }
+        }
     }
 }

@@ -475,8 +475,6 @@ namespace Abp.Core.Utils
             return builder.ToString();
         }
 
-
-
         /// <summary>
         /// 将数字集合转化为可供Sql语句查询的In()条件，如将集合{2,3,4}转化为字符串"2,3,4"。
         /// </summary>
@@ -499,23 +497,6 @@ namespace Abp.Core.Utils
             }
             return builder.ToString();
         }
-
-
-        public static DataView ObjectCollectionToDataView(string columnName, ICollection collection)
-        {
-            DataTable myTable = new DataTable("myTable");
-            DataColumn column = new DataColumn(columnName);
-            myTable.Columns.Add(column);
-            foreach (object value in collection)
-            {
-                DataRow row = myTable.NewRow();
-                row[columnName] = value;
-                myTable.Rows.Add(row);
-            }
-            DataView myDataView = new DataView(myTable);
-            return myDataView;
-        }
-
 
         public static string[] ArrayListToStringArray(ArrayList arraylist)
         {
@@ -805,7 +786,7 @@ namespace Abp.Core.Utils
 
         #region 汉字转拼音
 
-        private static readonly int[] pyvalue = new int[]{-20319,-20317,-20304,-20295,-20292,-20283,-20265,-20257,-20242,-20230,-20051,-                                20036,-20032,-20026,
+        private static readonly int[] pyvalue = new int[]{-20319,-20317,-20304,-20295,-20292,-20283,-20265,-20257,-20242,-20230,-20051,-20036,-20032,-20026,
                                                       -20002,-19990,-19986,-19982,-19976,-19805,-19784,-19775,-19774,-19763,-19756,-19751,-19746,-19741,-19739,-19728,
                                                       -19725,-19715,-19540,-19531,-19525,-19515,-19500,-19484,-19479,-19467,-19289,-19288,-19281,-19275,-19270,-19263,
                                                       -19261,-19249,-19243,-19242,-19238,-19235,-19227,-19224,-19218,-19212,-19038,-19023,-19018,-19006,-19003,-18996,

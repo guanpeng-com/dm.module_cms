@@ -90,6 +90,13 @@ namespace Abp.Templates
         [StringLength(MaxExtensionLength)]
         public virtual string Extension { get; set; }
 
+        /// <summary>
+        ///  模板内容
+        ///  保存在文件中，不在数据库
+        /// </summary>
+        [NotMapped]
+        public string TemplateContent { get; set; }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Template"/> class.
@@ -119,7 +126,7 @@ namespace Abp.Templates
         {
             this.Title = IndexDefaultTitle;
             this.Name = IndexDefaultName;
-            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.Index);
+            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.IndexTemplate);
             this.AppId = appId;
             this.Extension = DefaultExtension;
         }
@@ -132,7 +139,7 @@ namespace Abp.Templates
         {
             this.Title = ChannelDefaultTitle;
             this.Name = ChannelDefaultName;
-            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.Channel);
+            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.ChannelTemplate);
             this.AppId = appId;
             this.Extension = DefaultExtension;
         }
@@ -145,7 +152,7 @@ namespace Abp.Templates
         {
             this.Title = ContentDefaultTitle;
             this.Name = ContentDefaultName;
-            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.Content);
+            this.Type = ETemplateTypeUtils.GetValue(ETemplateType.ContentTemplate);
             this.AppId = appId;
             this.Extension = DefaultExtension;
         }
