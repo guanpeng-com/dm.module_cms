@@ -31,10 +31,16 @@ namespace Abp.Core.IO
         {
             get
             {
-                if (directoryUtils == null && HttpContext.Current != null)
+                if (directoryUtils == null)
                 {
-                    string applicationPath = HttpContext.Current.Request.ApplicationPath;
-                    directoryUtils = new DirectoryUtils(HttpContext.Current.Request.PhysicalApplicationPath);
+                    if (HttpContext.Current != null)
+                    {
+                        directoryUtils = new DirectoryUtils(HttpContext.Current.Request.PhysicalApplicationPath);
+                    }
+                    else if (System.AppDomain.CurrentDomain != null)
+                    {
+                        directoryUtils = new DirectoryUtils(PathUtils.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "..", ".."));
+                    }
                 }
                 return directoryUtils;
             }
