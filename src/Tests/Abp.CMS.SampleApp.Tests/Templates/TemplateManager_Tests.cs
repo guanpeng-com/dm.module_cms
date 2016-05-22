@@ -26,7 +26,7 @@ namespace Abp.CMS.SampleApp.Tests.Template
             //default app
             var deraultApp = await _appManager.FindDefaultAsync();
             //Act
-            var t = new Templates.Template(deraultApp.Id, "test", "T_test", ETemplateTypeUtils.GetValue(ETemplateType.FileTemplate), Templates.Template.DefaultExtension);
+            var t = new Templates.Template(deraultApp.Id, "test", "T_test", ETemplateTypeUtils.GetValue(ETemplateType.FileTemplate), Templates.Template.DefaultExtension, false);
             t.TemplateContent = "123123";
             await _templateManager.CreateAsync(t);
 

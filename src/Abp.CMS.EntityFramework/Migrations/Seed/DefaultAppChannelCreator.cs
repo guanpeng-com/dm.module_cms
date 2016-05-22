@@ -46,6 +46,7 @@ namespace Abp.CMS.EntityFramework.Migrations.Seed
                     AppId = defaultApp.Id,
                     Code = Channel.CreateCode(0),
                     Parent = null,
+                    IsIndex = true
                 };
 
                 _context.Channels.Add(defaultChannel);

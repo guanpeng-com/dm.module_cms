@@ -91,6 +91,12 @@ namespace Abp.Templates
         public virtual string Extension { get; set; }
 
         /// <summary>
+        /// 是否是默认模板
+        /// </summary>
+        [Required]
+        public virtual bool IsDefault { get; set; }
+
+        /// <summary>
         ///  模板内容
         ///  保存在文件中，不在数据库
         /// </summary>
@@ -109,13 +115,14 @@ namespace Abp.Templates
         /// <summary>
         /// Initializes a new instance of the <see cref="Template"/> class.
         /// </summary>
-        public Template(long appId, string title, string name, string type, string extension)
+        public Template(long appId, string title, string name, string type, string extension, bool isDefault)
         {
             AppId = appId;
             Title = title;
             Name = name;
             Extension = extension;
             Type = type;
+            IsDefault = isDefault;
         }
 
         /// <summary>
@@ -129,6 +136,7 @@ namespace Abp.Templates
             this.Type = ETemplateTypeUtils.GetValue(ETemplateType.IndexTemplate);
             this.AppId = appId;
             this.Extension = DefaultExtension;
+            this.IsDefault = true;
         }
 
         /// <summary>
@@ -142,6 +150,7 @@ namespace Abp.Templates
             this.Type = ETemplateTypeUtils.GetValue(ETemplateType.ChannelTemplate);
             this.AppId = appId;
             this.Extension = DefaultExtension;
+            this.IsDefault = true;
         }
 
         /// <summary>
@@ -155,6 +164,7 @@ namespace Abp.Templates
             this.Type = ETemplateTypeUtils.GetValue(ETemplateType.ContentTemplate);
             this.AppId = appId;
             this.Extension = DefaultExtension;
+            this.IsDefault = true;
         }
     }
 }

@@ -74,6 +74,23 @@ namespace Abp.Channels
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// 栏目模板ID
+        /// </summary>
+        [Required]
+        public virtual long ChannelTemplateId { get; set; }
+
+        /// <summary>
+        /// 内容模板ID
+        /// </summary>
+        [Required]
+        public virtual long ContentTemplateId { get; set; }
+
+        /// <summary>
+        /// 是否首页栏目
+        /// </summary>
+        public virtual bool IsIndex { get; set; }
+
+        /// <summary>
         /// Children of this OU.
         /// </summary>
         public virtual ICollection<Channel> Children { get; set; }
