@@ -9,6 +9,7 @@ using Abp.Domain.Entities.Auditing;
 using Abp.Extensions;
 using Abp.Apps;
 using Abp.Dependency;
+using Abp.Core.Enums;
 
 namespace Abp.Channels
 {
@@ -37,6 +38,31 @@ namespace Abp.Channels
         /// Maximum length of the <see cref="Code"/> property.
         /// </summary>
         public const int MaxCodeLength = MaxDepth * (CodeUnitLength + 1) - 1;
+
+        /// <summary>
+        ///  栏目组最大长度
+        /// </summary>
+        public const int MaxChannelGroupNameCollectionLength = 256;
+
+        /// <summary>
+        ///  栏目图片最大长度
+        /// </summary>
+        public const int MaxImageUrlLength = 256;
+
+        /// <summary>
+        ///  栏目路径最大长度
+        /// </summary>
+        public const int MaxFilePathLength = 256;
+
+        /// <summary>
+        ///  栏目链接最大长度
+        /// </summary>
+        public const int MaxLinkUrlLength = 256;
+
+        /// <summary>
+        /// 通用string长度
+        /// </summary>
+        public const int MaxDefaultLength = 50;
 
         /// <summary>
         /// AppId of this entity.
@@ -89,6 +115,67 @@ namespace Abp.Channels
         /// 是否首页栏目
         /// </summary>
         public virtual bool IsIndex { get; set; }
+
+        /// <summary>
+        ///  内容模型类型 <see cref="EModelTypeType"/>
+        /// </summary>
+        [StringLength(MaxDefaultLength)]
+        public virtual string ModelType { get; set; }
+
+        /// <summary>
+        ///  栏目组集合
+        /// </summary>
+        [StringLength(MaxChannelGroupNameCollectionLength)]
+        public virtual string ChannelGroupNameCollection { get; set; }
+
+        /// <summary>
+        ///  栏目图片
+        /// </summary>
+        [StringLength(MaxImageUrlLength)]
+        public virtual string ImageUrl { get; set; }
+
+        /// <summary>
+        ///  栏目地址（自定义）
+        /// </summary>
+        [StringLength(MaxFilePathLength)]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>
+        ///  栏目链接
+        /// </summary>
+        [StringLength(MaxLinkUrlLength)]
+        public virtual string LinkUrl { get; set; }
+
+        /// <summary>
+        ///  栏目链接类型
+        /// </summary>
+        [StringLength(MaxDefaultLength)]
+        public virtual string LinkType { get; set; }
+
+        /// <summary>
+        ///  栏目内容
+        /// </summary>
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// 关键字
+        /// </summary>
+        [StringLength(MaxDefaultLength)]
+        public virtual string Keywords { get; set; }
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        [StringLength(MaxDefaultLength)]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        ///  栏目下内容数量
+        /// </summary>
+        public virtual int ContentNum { get; set; }
+
+
+
 
         /// <summary>
         /// Children of this OU.

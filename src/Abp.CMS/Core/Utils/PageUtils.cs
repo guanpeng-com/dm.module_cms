@@ -1,4 +1,5 @@
-﻿using Abp.Core.Enums;
+﻿using Abp.Apps;
+using Abp.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -757,6 +758,43 @@ namespace Abp.Core.Utils
         public static void Redirect(string url)
         {
             HttpContext.Current.Response.Redirect(url, true);
+        }
+
+        /// <summary>
+        /// 获取文件相对路径，格式：AppDir + FilePath
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string GetShowUrlByApp(App app, string url)
+        {
+            if (url.IndexOf("@") == 0)
+            {
+                url = url.TrimStart('@');
+            }
+
+            url = PathUtils.Combine(app.AppDir, url);
+
+            return url;
+        }
+
+        /// <summary>
+        /// 获取数据库文件相对路径, 去掉Url中的AppDir
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="url">包含AppDir的文件路径</param>
+        /// <returns></returns>
+        public static string GetSaveUrlByApp(App app, string url)
+        {
+            if (url.IndexOf(app.AppDir) == 0)
+            {
+                url = url.Substring(app.AppDir.Length);
+            }
+            if (url.IndexOf("@") < 0)
+            {
+                url = PathUtils.Combine("@", url);
+            }
+            return url;
         }
 
     }

@@ -96,6 +96,9 @@
     <Compile Include="Channels\ChannelSettings.cs" />
     <Compile Include="Channels\IMayHaveChannel.cs" />
     <Compile Include="Channels\IMustHaveChannel.cs" />
+    <Compile Include="Contents\ContentBase.cs" />
+    <Compile Include="Core\Enums\ELinkType.cs" />
+    <Compile Include="Core\Enums\EModelType.cs" />
     <Compile Include="Core\Enums\ETemplateType.cs" />
     <Compile Include="Core\IO\DirectoryUtils.cs" />
     <Compile Include="Core\Utils\PageUtils.cs" />

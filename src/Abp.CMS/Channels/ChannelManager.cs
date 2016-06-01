@@ -7,6 +7,8 @@ using Abp.Domain.Uow;
 using Abp.Threading;
 using Abp.UI;
 using Abp.CMS;
+using Abp.Apps;
+using Abp.Core.Utils;
 
 namespace Abp.Channels
 {
@@ -15,6 +17,8 @@ namespace Abp.Channels
     /// </summary>
     public class ChannelManager : DomainService
     {
+        private readonly AppManager _appManager;
+
         /// <summary>
         /// 栏目仓储
         /// </summary>
@@ -30,14 +34,20 @@ namespace Abp.Channels
         /// </summary>
         public const int DefaultParentId = 0;
 
+        public const string ImageFolder = "Upload/Images";
+
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="channelRepository"></param>
-        public ChannelManager(IRepository<Channel, long> channelRepository)
+        /// <param name="appManager"></param>
+        public ChannelManager(
+            IRepository<Channel, long> channelRepository,
+            AppManager appManager)
         {
             ChannelRepository = channelRepository;
             LocalizationSourceName = AbpCMSConsts.LocalizationSourceName;
+            _appManager = appManager;
         }
 
         /// <summary>
@@ -215,6 +225,42 @@ namespace Abp.Channels
             {
                 throw new UserFriendlyException(L("ChannelDuplicateDisplayNameWarning", Channel.DisplayName));
             }
+        }
+
+        /// <summary>
+        /// 根据栏目的ImageUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="channelId"></param>
+        /// <returns></returns>
+        public virtual string GetImageUrl(long channelId)
+        {
+            var channel = ChannelRepository.Get(channelId);
+            var app = _appManager.AppRepository.Get(channel.AppId);
+
+            return GetImageUrl(app, channel);
+        }
+
+        /// <summary>
+        /// 根据栏目的ImageUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="channel"></param>
+        /// <returns></returns>
+        public virtual string GetImageUrl(App app, Channel channel)
+        {
+            return PageUtils.GetShowUrlByApp(app, channel.ImageUrl);
+        }
+
+        /// <summary>
+        /// 根据图片的文件名设置栏目的ImageUrl，不包含AppDir
+        /// </summary>
+        /// <param name="channel"></param>
+        /// <param name="fileName"></param>
+        public virtual void SetImageUrl(Channel channel, string fileName)
+        {
+            var app = _appManager.AppRepository.Get(channel.AppId);
+            var filePath = PageUtils.Combine(ImageFolder, fileName);
+            channel.ImageUrl = filePath;
         }
     }
 }

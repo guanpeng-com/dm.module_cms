@@ -7,6 +7,8 @@ using Abp.Domain.Uow;
 using Abp.CMS;
 using System;
 using Abp.Channels;
+using Abp.Core.Utils;
+using Abp.Apps;
 
 namespace Abp.Contents
 {
@@ -25,6 +27,12 @@ namespace Abp.Contents
         /// </summary>
         protected ChannelManager ChannelManager { get; private set; }
 
+        private readonly AppManager _appManager;
+
+        public const string ImageFolder = "Upload/Images";
+        public const string VideoFolder = "Upload/Videos";
+        public const string FileFolder = "Upload/Files";
+
 
         /// <summary>
         /// 构造函数
@@ -33,11 +41,13 @@ namespace Abp.Contents
         /// <param name="channelManager"></param>
         public ContentManager(
             IRepository<Content, long> contentRepository,
-            ChannelManager channelManager)
+            ChannelManager channelManager,
+            AppManager appManager)
         {
             ContentRepository = contentRepository;
             ChannelManager = channelManager;
             LocalizationSourceName = AbpCMSConsts.LocalizationSourceName;
+            _appManager = appManager;
         }
 
         /// <summary>
@@ -141,5 +151,118 @@ namespace Abp.Contents
 
         }
 
+        #region ImageUrl
+        /// <summary>
+        /// 根据内容的ImageUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="contentId"></param>
+        /// <returns></returns>
+        public virtual string GetImageUrl(long contentId)
+        {
+            var content = ContentRepository.Get(contentId);
+            var app = _appManager.AppRepository.Get(content.AppId);
+
+            return GetImageUrl(app, content);
+        }
+
+        /// <summary>
+        /// 根据内容的ImageUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public virtual string GetImageUrl(App app, Content content)
+        {
+            return PageUtils.GetShowUrlByApp(app, content.ImageUrl);
+        }
+
+        /// <summary>
+        /// 根据图片的文件名设置内容的ImageUrl，不包含AppDir
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="fileName"></param>
+        public virtual void SetImageUrl(Content content, string fileName)
+        {
+            var app = _appManager.AppRepository.Get(content.AppId);
+            var filePath = PageUtils.Combine(ImageFolder, fileName);
+            content.ImageUrl = filePath;
+        }
+        #endregion
+
+        #region VideoUrl
+        /// <summary>
+        /// 根据内容的VideoUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="contentId"></param>
+        /// <returns></returns>
+        public virtual string GetVideoUrl(long contentId)
+        {
+            var content = ContentRepository.Get(contentId);
+            var app = _appManager.AppRepository.Get(content.AppId);
+
+            return GetVideoUrl(app, content);
+        }
+
+        /// <summary>
+        /// 根据内容的VideoUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public virtual string GetVideoUrl(App app, Content content)
+        {
+            return PageUtils.GetShowUrlByApp(app, content.VideoUrl);
+        }
+
+        /// <summary>
+        /// 根据图片的文件名设置内容的VideoUrl，不包含AppDir
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="fileName"></param>
+        public virtual void SetVideoUrl(Content content, string fileName)
+        {
+            var app = _appManager.AppRepository.Get(content.AppId);
+            var filePath = PageUtils.Combine(VideoFolder, fileName);
+            content.VideoUrl = filePath;
+        }
+        #endregion
+
+        #region FileUrl
+        /// <summary>
+        /// 根据内容的FileUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="contentId"></param>
+        /// <returns></returns>
+        public virtual string GetFileUrl(long contentId)
+        {
+            var content = ContentRepository.Get(contentId);
+            var app = _appManager.AppRepository.Get(content.AppId);
+
+            return GetFileUrl(app, content);
+        }
+
+        /// <summary>
+        /// 根据内容的FileUrl获取图片显示地址的相对路径，包含AppDir
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public virtual string GetFileUrl(App app, Content content)
+        {
+            return PageUtils.GetShowUrlByApp(app, content.FileUrl);
+        }
+
+        /// <summary>
+        /// 根据图片的文件名设置内容的FileUrl，不包含AppDir
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="fileName"></param>
+        public virtual void SetFileUrl(Content content, string fileName)
+        {
+            var app = _appManager.AppRepository.Get(content.AppId);
+            var filePath = PageUtils.Combine(FileFolder, fileName);
+            content.FileUrl = filePath;
+        }
+        #endregion
     }
 }

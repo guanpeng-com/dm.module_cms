@@ -17,7 +17,7 @@ namespace Abp.CMS
         /// <summary>
         /// Current version of the CMS module.
         /// </summary>
-        public const string CurrentVersion = "1.0.0.5";
+        public const string CurrentVersion = "1.0.0.6";
 
         /// <summary>
         /// 预加载
