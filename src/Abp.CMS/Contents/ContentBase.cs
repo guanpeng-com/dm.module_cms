@@ -117,7 +117,7 @@ namespace Abp.Contents
         /// <summary>
         ///  最后点击时间
         /// </summary>
-        public virtual DateTime LastHitsDate { get; set; }
+        public virtual DateTime? LastHitsDate { get; set; }
 
 
         /// <summary>
@@ -125,7 +125,6 @@ namespace Abp.Contents
         /// </summary>
         public ContentBase()
         {
-
         }
 
         /// <summary>

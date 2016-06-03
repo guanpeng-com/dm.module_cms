@@ -228,39 +228,26 @@ namespace Abp.Channels
         }
 
         /// <summary>
-        /// 根据栏目的ImageUrl获取图片显示地址的相对路径，包含AppDir
+        /// 根据图片的文件名获取栏目的ImageUrl，不包含AppDir
         /// </summary>
-        /// <param name="channelId"></param>
-        /// <returns></returns>
-        public virtual string GetImageUrl(long channelId)
-        {
-            var channel = ChannelRepository.Get(channelId);
-            var app = _appManager.AppRepository.Get(channel.AppId);
-
-            return GetImageUrl(app, channel);
-        }
-
-        /// <summary>
-        /// 根据栏目的ImageUrl获取图片显示地址的相对路径，包含AppDir
-        /// </summary>
-        /// <param name="app"></param>
-        /// <param name="channel"></param>
-        /// <returns></returns>
-        public virtual string GetImageUrl(App app, Channel channel)
-        {
-            return PageUtils.GetShowUrlByApp(app, channel.ImageUrl);
-        }
-
-        /// <summary>
-        /// 根据图片的文件名设置栏目的ImageUrl，不包含AppDir
-        /// </summary>
-        /// <param name="channel"></param>
         /// <param name="fileName"></param>
-        public virtual void SetImageUrl(Channel channel, string fileName)
+        public virtual string GetImageUrl(string fileName)
         {
-            var app = _appManager.AppRepository.Get(channel.AppId);
             var filePath = PageUtils.Combine(ImageFolder, fileName);
-            channel.ImageUrl = filePath;
+            return filePath;
+        }
+
+        /// <summary>
+        /// 根据图片的文件名获取栏目的ImageUrl，包含AppDir
+        /// </summary>
+        /// <param name="fileName"></param>
+        public virtual string GetImageUrlWithAppDir(App app, string fileName)
+        {
+            if (app == null)
+                return string.Empty;
+            var filePath = PageUtils.Combine(ImageFolder, fileName);
+            filePath = PageUtils.GetUrlWithAppDir(app, filePath);
+            return filePath;
         }
     }
 }

@@ -766,8 +766,11 @@ namespace Abp.Core.Utils
         /// <param name="app"></param>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static string GetShowUrlByApp(App app, string url)
+        public static string GetUrlWithAppDir(App app, string url)
         {
+            if (url == null)
+                return "";
+
             if (url.IndexOf("@") == 0)
             {
                 url = url.TrimStart('@');
@@ -784,8 +787,10 @@ namespace Abp.Core.Utils
         /// <param name="app"></param>
         /// <param name="url">包含AppDir的文件路径</param>
         /// <returns></returns>
-        public static string GetSaveUrlByApp(App app, string url)
+        public static string GetUrlWithoutAppDir(App app, string url)
         {
+            if (url == null)
+                return "";
             if (url.IndexOf(app.AppDir) == 0)
             {
                 url = url.Substring(app.AppDir.Length);
