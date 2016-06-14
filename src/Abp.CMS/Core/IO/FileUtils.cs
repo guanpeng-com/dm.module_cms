@@ -14,18 +14,28 @@ namespace Abp.Core.IO
     {
         public static string ReadText(string filePath, ECharset charset)
         {
-            StreamReader sr = new StreamReader(filePath, ECharsetUtils.GetEncoding(charset));
-            string text = sr.ReadToEnd();
-            sr.Close();
-            return text;
+            if (IsFileExists(filePath))
+            {
+                StreamReader sr = new StreamReader(filePath, ECharsetUtils.GetEncoding(charset));
+                string text = sr.ReadToEnd();
+                sr.Close();
+                return text;
+            }
+            else
+                return string.Empty;
         }
 
         public static string ReadText(string filePath, Encoding encoding)
         {
-            StreamReader sr = new StreamReader(filePath, encoding);
-            string text = sr.ReadToEnd();
-            sr.Close();
-            return text;
+            if (IsFileExists(filePath))
+            {
+                StreamReader sr = new StreamReader(filePath, encoding);
+                string text = sr.ReadToEnd();
+                sr.Close();
+                return text;
+            }
+            else
+                return string.Empty;
         }
 
         public static void WriteText(string filePath, ECharset charset, string content)

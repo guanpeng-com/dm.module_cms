@@ -2,13 +2,14 @@
 using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.NHibernate;
+using Abp.Zero.NHibernate;
 
 namespace Abp.CMS.NHibernate
 {
     /// <summary>
     /// Startup class for ABP CMS NHibernate module.
     /// </summary>
-    [DependsOn(typeof(AbpCMSCoreModule), typeof(AbpNHibernateModule))]
+    [DependsOn(typeof(AbpCMSCoreModule), typeof(AbpZeroNHibernateModule))]
     public class AbpCMSNHibernateModule : AbpModule
     {
         public override void PreInitialize()

@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using Abp.Modules;
-using Abp.CMS.SampleApp.Authorization;
-using Abp.CMS.SampleApp.Configuration;
-using Abp.CMS.SampleApp.Features;
 using Abp.CMS.Configuration;
+using Abp.Zero;
+using Abp.Zero.Configuration;
+using Abp.CMS.SampleApp.Authorization.Roles;
 
 namespace Abp.CMS.SampleApp
 {
@@ -12,13 +12,10 @@ namespace Abp.CMS.SampleApp
     {
         public override void PreInitialize()
         {
-            Configuration.Modules.CMS().LanguageManagement.EnableDbLocalization();
-
-            Configuration.Features.Providers.Add<AppFeatureProvider>();
-
-            Configuration.Authorization.Providers.Add<AppAuthorizationProvider>();
-            Configuration.Settings.Providers.Add<AppSettingProvider>();
             Configuration.MultiTenancy.IsEnabled = true;
+
+            //Configure roles
+            AppRoleConfig.Configure(Configuration.Modules.Zero().RoleManagement);
         }
 
         public override void Initialize()

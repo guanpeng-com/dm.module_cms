@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{96C4ADE9-8C68-450C-B2A1-C45610D370C8}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.CMS.EntityFramework", "Abp.CMS.EntityFramework\Abp.CMS.EntityFramework.csproj", "{B728E703-345B-4553-A8B0-B28BB6738688}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.CMS.NHibernate", "Abp.CMS.NHibernate\Abp.CMS.NHibernate.csproj", "{C43A88EE-1537-40BB-8154-4271E6AAD919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abp.CMS.SampleApp", "Tests\Abp.CMS.SampleApp\Abp.CMS.SampleApp.csproj", "{59AA0119-F76E-433F-B9D1-385F51A13A17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{C43A88EE-1537-40BB-8154-4271E6AAD919}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C43A88EE-1537-40BB-8154-4271E6AAD919}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C43A88EE-1537-40BB-8154-4271E6AAD919}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59AA0119-F76E-433F-B9D1-385F51A13A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59AA0119-F76E-433F-B9D1-385F51A13A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59AA0119-F76E-433F-B9D1-385F51A13A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59AA0119-F76E-433F-B9D1-385F51A13A17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{3C90D572-EA4E-499C-AF95-407BFA8A36B8} = {34AA52E9-B75E-46EF-AEBB-460AED9A0767}
 		{28D2E425-BA18-4451-9748-86A8FF596414} = {34AA52E9-B75E-46EF-AEBB-460AED9A0767}
 		{BB02243D-42E6-4BFE-AC08-7F946DE80F3E} = {34AA52E9-B75E-46EF-AEBB-460AED9A0767}
+		{59AA0119-F76E-433F-B9D1-385F51A13A17} = {34AA52E9-B75E-46EF-AEBB-460AED9A0767}
 	EndGlobalSection
 EndGlobal

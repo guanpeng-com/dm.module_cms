@@ -65,6 +65,8 @@ namespace Abp.Core.IO
         /// </summary>
         public class Template
         {
+            public const string TemplateDirName = "Templates";
+
             /// <summary>
             ///  首页模板文件夹
             /// </summary>

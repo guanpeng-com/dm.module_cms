@@ -1,7 +1,9 @@
 ﻿using Abp.Apps;
 using Abp.Channels;
 using Abp.CMS.EntityFramework;
+using Abp.CMS.SampleApp.DMUsers;
 using Abp.CMS.SampleApp.EntityFramework;
+using Abp.CMS.SampleApp.MultiTenancy;
 using System.Linq;
 
 namespace Abp.CMS.SampleApp.Tests.TestDatas
@@ -27,11 +29,16 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
 
         public void Build()
         {
+            _context.Tenants.Add(new Tenant(Tenant.DefaultTenantName, Tenant.DefaultTenantName));
+            _context.SaveChanges();
+
             CreateCHs();
         }
 
         private void CreateCHs()
         {
+            var defaultTenant = _context.Tenants.FirstOrDefault(t => t.TenancyName == Tenant.DefaultTenantName);
+            _context.SaveChanges();
             var defaultApp = _context.Apps.FirstOrDefault(e => e.Id > 0);
             if (defaultApp == null)
             {
@@ -41,7 +48,7 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
                     AppName = App.DefaultName,
                     AppDir = App.DefaultDir,
                     AppUrl = "/" + App.DefaultDir,
-                    TenantId = 0
+                    TenantId = defaultTenant.Id
                 };
                 _context.Apps.Add(defaultApp);
                 _context.SaveChanges();

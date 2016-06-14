@@ -9,13 +9,22 @@ using Abp.Apps;
 using Abp.Dependency;
 using Abp.Contents;
 using Abp.Templates;
+using Abp.DMUsers;
+using Abp.Zero.EntityFramework;
+using Abp.MultiTenancy;
+using Abp.Authorization.Roles;
+using Abp.Authorization.Users;
 
 namespace Abp.CMS.EntityFramework
 {
     /// <summary>
     /// DbContext for ABP CMS.
     /// </summary>
-    public class AbpCMSDbContext : AbpDbContext
+    public abstract class AbpCMSDbContext<TTenant, TRole, TUser, TDMUser> : AbpZeroDbContext<TTenant, TRole, TUser>
+        where TTenant : AbpTenant<TUser>
+        where TRole : AbpRole<TUser>
+        where TUser : AbpUser<TUser>
+        where TDMUser : DMUser<TDMUser>
     {
         /// <summary>
         /// Apps
@@ -29,14 +38,34 @@ namespace Abp.CMS.EntityFramework
 
 
         /// <summary>
-        /// Channels.
+        /// Contents.
         /// </summary>
         public virtual IDbSet<Content> Contents { get; set; }
+
+        /// <summary>
+        /// Goods.
+        /// </summary>
+        public virtual IDbSet<Good> Goods { get; set; }
 
         /// <summary>
         /// Template.
         /// </summary>
         public virtual IDbSet<Template> Templates { get; set; }
+
+        /// <summary>
+        /// 前台用户
+        /// </summary>
+        public virtual IDbSet<TDMUser> DMUsers { get; set; }
+
+        /// <summary>
+        /// 前台用户登陆
+        /// </summary>
+        public virtual IDbSet<DMUserLogin> DMUserLogins { get; set; }
+
+        /// <summary>
+        /// 前台用户登陆记录
+        /// </summary>
+        public virtual IDbSet<DMUserLoginAttempt> DMUserLoginAttempts { get; set; }
 
         /// <summary>
         /// Default constructor.

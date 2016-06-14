@@ -5,13 +5,16 @@ using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
 using Abp.CMS.Configuration;
+using Abp.Zero;
+using Abp.Zero.Ldap;
+using Abp.Zero.Configuration;
 
 namespace Abp.CMS
 {
     /// <summary>
     /// ABP CMS core module.
     /// </summary>
-    [DependsOn(typeof(AbpKernelModule))]
+    [DependsOn(typeof(AbpZeroCoreModule), typeof(AbpZeroLdapModule))]
     public class AbpCMSCoreModule : AbpModule
     {
         /// <summary>

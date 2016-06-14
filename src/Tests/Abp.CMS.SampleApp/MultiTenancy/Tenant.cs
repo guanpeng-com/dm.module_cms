@@ -1,8 +1,14 @@
-﻿using Abp.CMS.SampleApp.Users;
+﻿using Abp.CMS.SampleApp.Authorization.Users;
+using Abp.MultiTenancy;
 
 namespace Abp.CMS.SampleApp.MultiTenancy
 {
-    public class Tenant : AbpTenant<Tenant, User>
+    /// <summary>
+    /// Represents a Tenant in the system.
+    /// A tenant is a isolated customer for the application
+    /// which has it's own users, roles and other application entities.
+    /// </summary>
+    public class Tenant : AbpTenant<User>
     {
         protected Tenant()
         {

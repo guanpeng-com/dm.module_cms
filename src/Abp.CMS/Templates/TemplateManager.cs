@@ -194,19 +194,19 @@ namespace Abp.Templates
         {
             if (template.Type == ETemplateTypeUtils.GetValue(ETemplateType.IndexTemplate))
             {
-                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.IndexTemplateDirName, template.Name + template.Extension);
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.TemplateDirName, DirectoryUtils.Template.IndexTemplateDirName, template.Name + template.Extension);
             }
             else if (template.Type == ETemplateTypeUtils.GetValue(ETemplateType.ChannelTemplate))
             {
-                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.ChannelTemplateDirName, template.Name + template.Extension);
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.TemplateDirName, DirectoryUtils.Template.ChannelTemplateDirName, template.Name + template.Extension);
             }
             else if (template.Type == ETemplateTypeUtils.GetValue(ETemplateType.ContentTemplate))
             {
-                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.ContentTemplateDirName, template.Name + template.Extension);
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.TemplateDirName, DirectoryUtils.Template.ContentTemplateDirName, template.Name + template.Extension);
             }
             else
             {
-                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.FileTemplateDirName, template.Name + template.Extension);
+                return PathUtils.Combine(DirectoryUtils.Instance.PhysicalApplicationPath, template.App.AppDir, DirectoryUtils.Template.TemplateDirName, DirectoryUtils.Template.FileTemplateDirName, template.Name + template.Extension);
             }
         }
     }

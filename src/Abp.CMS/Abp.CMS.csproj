@@ -39,6 +39,14 @@
       <HintPath>..\packages\Abp.0.9.1.1\lib\net452\Abp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Abp.Zero, Version=0.9.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.0.9.1.1\lib\net452\Abp.Zero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Abp.Zero.Ldap, Version=0.9.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.Ldap.0.9.1.1\lib\net452\Abp.Zero.Ldap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
@@ -96,6 +104,8 @@
     <Compile Include="Channels\ChannelSettings.cs" />
     <Compile Include="Channels\IMayHaveChannel.cs" />
     <Compile Include="Channels\IMustHaveChannel.cs" />
+    <Compile Include="Contents\GoodManager.cs" />
+    <Compile Include="Contents\Good.cs" />
     <Compile Include="Contents\ContentBase.cs" />
     <Compile Include="Core\Enums\ELinkType.cs" />
     <Compile Include="Core\Enums\EModelType.cs" />
@@ -106,6 +116,13 @@
     <Compile Include="Core\Utils\RegexUtils.cs" />
     <Compile Include="Core\Utils\StringUtils.cs" />
     <Compile Include="Core\Utils\TranslateUtils.cs" />
+    <Compile Include="DMUsers\DMLoginResultType.cs" />
+    <Compile Include="DMUsers\DMUser.cs" />
+    <Compile Include="DMUsers\DMUserBase.cs" />
+    <Compile Include="DMUsers\DMUserManager.cs" />
+    <Compile Include="DMUsers\DMUserStore.cs" />
+    <Compile Include="DMUsers\DMUserLogin.cs" />
+    <Compile Include="DMUsers\DMUserLoginAttempt.cs" />
     <Compile Include="Templates\Template.cs" />
     <Compile Include="Templates\TemplateManager.cs" />
     <Compile Include="Contents\Content.cs" />
@@ -155,6 +172,7 @@
   <ItemGroup>
     <EmbeddedResource Include="CMS\Localization\Source\AbpCMS-pt-BR.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

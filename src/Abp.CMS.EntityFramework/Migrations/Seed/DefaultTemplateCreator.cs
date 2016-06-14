@@ -2,14 +2,19 @@ using Abp.Templates;
 using Abp.Channels;
 using System.Linq;
 using Abp.Apps;
+using Abp.DMUsers;
+using Abp.CMS.SampleApp.MultiTenancy;
+using Abp.CMS.SampleApp.Authorization.Roles;
+using Abp.CMS.SampleApp.Authorization.Users;
+using Abp.CMS.SampleApp.DMUsers;
 
 namespace Abp.CMS.EntityFramework.Migrations.Seed
 {
     public class DefaultTemplateCreator
     {
-        private readonly AbpCMSDbContext _context;
+        private readonly AbpCMSDbContext<Tenant, Role, User, DMUser> _context;
 
-        public DefaultTemplateCreator(AbpCMSDbContext context)
+        public DefaultTemplateCreator(AbpCMSDbContext<Tenant, Role, User, DMUser> context)
         {
             _context = context;
         }

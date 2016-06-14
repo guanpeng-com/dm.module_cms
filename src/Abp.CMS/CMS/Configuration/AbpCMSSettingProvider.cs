@@ -10,6 +10,13 @@ namespace Abp.CMS.Configuration
         {
             return new List<SettingDefinition>
                    {
+                         new SettingDefinition(
+                           AbpCMSSettingNames.DMUserManagement.IsEmailConfirmationRequiredForLogin,
+                           "false",
+                           new FixedLocalizableString("Is email confirmation required for login."),
+                           scopes: SettingScopes.Application | SettingScopes.Tenant,
+                           isVisibleToClients: true
+                           ),
                        new SettingDefinition(
                            AbpCMSSettingNames.Channel.MaxContentCount,
                            int.MaxValue.ToString(),

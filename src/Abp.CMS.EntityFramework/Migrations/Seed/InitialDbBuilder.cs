@@ -1,13 +1,18 @@
-﻿using Abp.EntityFramework;
+﻿using Abp.CMS.SampleApp.Authorization.Roles;
+using Abp.CMS.SampleApp.Authorization.Users;
+using Abp.CMS.SampleApp.DMUsers;
+using Abp.CMS.SampleApp.MultiTenancy;
+using Abp.DMUsers;
+using Abp.EntityFramework;
 using EntityFramework.DynamicFilters;
 
 namespace Abp.CMS.EntityFramework.Migrations.Seed
 {
     public class InitialDbBuilder
     {
-        private readonly AbpCMSDbContext _context;
+        private readonly AbpCMSDbContext<Tenant, Role, User, DMUser> _context;
 
-        public InitialDbBuilder(AbpCMSDbContext context)
+        public InitialDbBuilder(AbpCMSDbContext<Tenant, Role, User, DMUser> context)
         {
             _context = context;
         }

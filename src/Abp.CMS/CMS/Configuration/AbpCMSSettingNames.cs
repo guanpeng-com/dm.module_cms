@@ -5,6 +5,14 @@ namespace Abp.CMS.Configuration
     /// </summary>
     public static class AbpCMSSettingNames
     {
+        public static class DMUserManagement
+        {
+            /// <summary>
+            /// "Abp.CMS.DMUserManagement.IsEmailConfirmationRequiredForLogin".
+            /// </summary>
+            public const string IsEmailConfirmationRequiredForLogin = "Abp.CMS.DMUserManagement.IsEmailConfirmationRequiredForLogin";
+        }
+
         /// <summary>
         /// À¸Ä¿µÄÅäÖÃ
         /// </summary>
