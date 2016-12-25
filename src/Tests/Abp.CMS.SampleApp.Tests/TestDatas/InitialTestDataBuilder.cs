@@ -17,6 +17,8 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
             _context.DisableAllFilters();
 
             new InitialTestChannelsBuilder(_context).Build();
+
+            _context.SaveChanges();
         }
     }
 }

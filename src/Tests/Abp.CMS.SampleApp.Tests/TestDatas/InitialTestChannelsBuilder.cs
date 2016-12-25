@@ -33,6 +33,7 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
             _context.SaveChanges();
 
             CreateCHs();
+            _context.SaveChanges();
         }
 
         private void CreateCHs()
@@ -53,7 +54,7 @@ namespace Abp.CMS.SampleApp.Tests.TestDatas
                 _context.Apps.Add(defaultApp);
                 _context.SaveChanges();
             }
-
+            var defaultApp1 = _context.Apps.FirstOrDefault(a => a.AppName == App.DefaultName);
 
             var defaultChannel = _context.Channels.FirstOrDefault(e => e.Id > 0);
             if (defaultChannel == null)

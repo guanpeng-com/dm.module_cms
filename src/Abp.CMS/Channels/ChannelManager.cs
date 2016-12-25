@@ -58,9 +58,28 @@ namespace Abp.Channels
         [UnitOfWork]
         public virtual async Task CreateAsync(Channel Channel)
         {
+            var app = _appManager.GetById(Channel.AppId);
             Channel.Code = await GetNextChildCodeAsync(Channel.ParentId);
+            Channel.TenantId = app.TenantId;
             await ValidateChannelAsync(Channel);
             await ChannelRepository.InsertAsync(Channel);
+        }
+
+        /// <summary>
+        /// 创建默认的栏目
+        /// </summary>
+        /// <param name="appId">应用Id</param>
+        /// <returns></returns>
+        public virtual async Task CreateDefaultChannel(long appId)
+        {
+            var app = _appManager.GetById(appId);
+            Channel channel = new Channel();
+            channel.Code = await GetNextChildCodeAsync(null);
+            channel.AppId = appId;
+            channel.DisplayName = DefaultChannelName;
+            channel.ParentId = null;
+            channel.TenantId = app.TenantId;
+            await ChannelRepository.InsertAsync(channel);
         }
 
         /// <summary>

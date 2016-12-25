@@ -20,10 +20,22 @@ namespace Abp.CMS.SampleApp.Tests.Channel
         }
 
         [Fact]
+        public async Task Should_Create_Default_Channel()
+        {
+            var defaultApp = await _AppManager.FindDefaultAsync();
+
+            await _ChannelManager.CreateDefaultChannel(defaultApp.Id);
+
+            var defaultChannel = _ChannelManager.FindDefaultAsync();
+
+            defaultChannel.Id.ShouldBeGreaterThan(0);
+        }
+
+        [Fact]
         public async Task Should_Create_Root_CH()
         {
             //default app
-            var deraultApp =await _AppManager.FindDefaultAsync();
+            var deraultApp = await _AppManager.FindDefaultAsync();
 
             //Act
             await _ChannelManager.CreateAsync(new Channels.Channel(deraultApp.Id, "Root 1"));
@@ -41,11 +53,11 @@ namespace Abp.CMS.SampleApp.Tests.Channel
             var deraultApp = _AppManager.FindDefault();
 
             //Arrange
-           await _ChannelManager.CreateAsync(new Channels.Channel(deraultApp.Id, "CH1"));
+            await _ChannelManager.CreateAsync(new Channels.Channel(deraultApp.Id, "CH1"));
             var ou1 = GetCH("CH1");
 
-           //Act
-           await _ChannelManager.CreateAsync(new Channels.Channel(deraultApp.Id, "CH1 New Child", ou1.Id));
+            //Act
+            await _ChannelManager.CreateAsync(new Channels.Channel(deraultApp.Id, "CH1 New Child", ou1.Id));
 
             //Assert
             var newChild = GetCHOrNull("CH1 New Child");

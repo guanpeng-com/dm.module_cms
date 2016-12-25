@@ -16,7 +16,7 @@ namespace Abp.Contents
     /// <summary>
     /// Represents an Content.
     /// </summary>
-    public class ContentBase : FullAuditedEntity<long>, IMustHaveApp, IMustHaveChannel
+    public class ContentBase : FullAuditedEntity<long>, IMustHaveApp, IMustHaveChannel, IMayHaveTenant
     {
         /// <summary>
         /// Maximum length of the <see cref="Title"/> property.
@@ -32,6 +32,11 @@ namespace Abp.Contents
         ///  最大内容组长度
         /// </summary>
         public const int MaxContentGroupNameCollectionLength = 256;
+
+        /// <summary>
+        /// TenantId
+        /// </summary>
+        public virtual int? TenantId { get; set; }
 
         /// <summary>
         /// 应用ID

@@ -16,7 +16,7 @@ namespace Abp.Contents
     /// <summary>
     /// Represents an Good.
     /// </summary>
-    [Table("dm_Goods")]
+    [Table("cms_Goods")]
     public class Good : ContentBase
     {
         /// <summary>

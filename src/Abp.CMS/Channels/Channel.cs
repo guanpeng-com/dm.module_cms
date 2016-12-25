@@ -16,8 +16,8 @@ namespace Abp.Channels
     /// <summary>
     /// Represents an Channel.
     /// </summary>
-    [Table("dm_Channels")]
-    public class Channel : FullAuditedEntity<long>, IMustHaveApp
+    [Table("cms_Channels")]
+    public class Channel : FullAuditedEntity<long>, IMustHaveApp, IMayHaveTenant
     {
         /// <summary>
         /// Maximum length of the <see cref="DisplayName"/> property.
@@ -63,6 +63,11 @@ namespace Abp.Channels
         /// 通用string长度
         /// </summary>
         public const int MaxDefaultLength = 50;
+
+        /// <summary>
+        /// TenantId
+        /// </summary>
+        public virtual int? TenantId { get; set; }
 
         /// <summary>
         /// AppId of this entity.

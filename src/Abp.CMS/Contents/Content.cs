@@ -16,7 +16,7 @@ namespace Abp.Contents
     /// <summary>
     /// Represents an Content.
     /// </summary>
-    [Table("dm_Contents")]
+    [Table("cms_Contents")]
     public class Content : ContentBase
     {
         /// <summary>

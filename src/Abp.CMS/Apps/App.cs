@@ -14,8 +14,8 @@ namespace Abp.Apps
     /// <summary>
     /// 应用
     /// </summary>
-    [Table("dm_Apps")]
-    public class App : FullAuditedEntity<long>, IMustHaveTenant
+    [Table("cms_Apps")]
+    public class App : FullAuditedEntity<long>, IMayHaveTenant
     {
         public const string DefaultName = "Main";
         public const string DefaultDir = "Main";
@@ -43,7 +43,7 @@ namespace Abp.Apps
         /// <summary>
         /// 租户ID
         /// </summary>
-        public virtual int TenantId { get; set; }
+        public virtual int? TenantId { get; set; }
 
         /// <summary>
         ///  app名称
@@ -81,12 +81,13 @@ namespace Abp.Apps
         /// <summary>
         ///  构造函数<see cref="App"/>
         /// </summary>
-        public App(int tenantId, string appName, string displayName, string appDir)
+        public App(int? tenantId, string appName, string displayName, string appDir)
         {
             this.TenantId = tenantId;
-            this.AppName = AppName;
+            this.AppName = appName;
             this.DisplayName = displayName;
             this.AppDir = appDir;
+            this.AppUrl = "/" + appDir;
         }
 
     }

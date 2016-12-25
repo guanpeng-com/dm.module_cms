@@ -10,7 +10,7 @@ namespace Abp.DMUsers
     /// <summary>
     /// Base class for user.
     /// </summary>
-    [Table("dm_Users")]
+    [Table("localink_Users")]
     public abstract class DMUserBase : FullAuditedEntity<long>, IUser<long>, IMayHaveTenant
     {
         /// <summary>

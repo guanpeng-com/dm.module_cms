@@ -7,7 +7,7 @@ namespace Abp.DMUsers
     /// <summary>
     /// Used to store a User Login for external Login services.
     /// </summary>
-    [Table("dm_UserLogins")]
+    [Table("localink_UserLogins")]
     public class DMUserLogin : Entity<long>, IMayHaveTenant
     {
         /// <summary>

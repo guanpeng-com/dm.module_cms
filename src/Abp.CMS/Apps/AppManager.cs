@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Abp.UI;
+using Abp.Channels;
 
 namespace Abp.Apps
 {
@@ -20,6 +21,7 @@ namespace Abp.Apps
         /// 应用仓储
         /// </summary>
         public IRepository<App, long> AppRepository { get; private set; }
+        
 
         /// <summary>
         /// 构造函数
@@ -40,6 +42,7 @@ namespace Abp.Apps
         {
             await ValidateAppAsync(app);
             await AppRepository.InsertAsync(app);
+            
         }
 
         /// <summary>

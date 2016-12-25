@@ -19,8 +19,8 @@ namespace Abp.Templates
     /// <summary>
     /// Represents an Template.
     /// </summary>
-    [Table("dm_Templates")]
-    public class Template : FullAuditedEntity<long>, IMustHaveApp
+    [Table("cms_Templates")]
+    public class Template : FullAuditedEntity<long>, IMustHaveApp, IMayHaveTenant
     {
         public const string IndexDefaultName = "T_默认首页模板";
         public const string IndexDefaultTitle = "默认首页模板";
@@ -50,6 +50,12 @@ namespace Abp.Templates
         /// Maximum length of the <see cref="Name"/> property.
         /// </summary>
         public const int MaxNameLength = 128;
+
+        /// <summary>
+        /// 应用ID
+        /// </summary>
+        public virtual int? TenantId { get; set; }
+
 
         /// <summary>
         /// 应用ID

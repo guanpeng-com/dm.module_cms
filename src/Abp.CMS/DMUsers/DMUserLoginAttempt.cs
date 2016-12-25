@@ -10,7 +10,7 @@ namespace Abp.DMUsers
     /// <summary>
     /// Used to save a login attempt of a user.
     /// </summary>
-    [Table("dm_UserLoginAttempts")]
+    [Table("localink_UserLoginAttempts")]
     public class DMUserLoginAttempt : Entity<long>, IHasCreationTime, IMayHaveTenant
     {
         /// <summary>

@@ -58,6 +58,7 @@ namespace Abp.Contents
         [UnitOfWork]
         public virtual async Task CreateAsync(Content Content)
         {
+            Content.TenantId = Content.App.TenantId;
             await ValidateContentAsync(Content);
             await ContentRepository.InsertAsync(Content);
         }
