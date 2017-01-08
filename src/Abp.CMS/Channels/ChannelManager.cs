@@ -70,12 +70,12 @@ namespace Abp.Channels
         /// </summary>
         /// <param name="appId">应用Id</param>
         /// <returns></returns>
-        public virtual async Task CreateDefaultChannel(long appId)
+        public virtual async Task CreateDefaultChannel(App app)
         {
-            var app = _appManager.GetById(appId);
+            //var app = _appManager.GetById(appId);
             Channel channel = new Channel();
             channel.Code = await GetNextChildCodeAsync(null);
-            channel.AppId = appId;
+            channel.AppId = app.Id;
             channel.DisplayName = DefaultChannelName;
             channel.ParentId = null;
             channel.TenantId = app.TenantId;

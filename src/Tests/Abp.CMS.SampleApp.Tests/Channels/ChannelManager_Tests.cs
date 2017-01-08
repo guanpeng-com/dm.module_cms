@@ -24,7 +24,7 @@ namespace Abp.CMS.SampleApp.Tests.Channel
         {
             var defaultApp = await _AppManager.FindDefaultAsync();
 
-            await _ChannelManager.CreateDefaultChannel(defaultApp.Id);
+            await _ChannelManager.CreateDefaultChannel(defaultApp);
 
             var defaultChannel = _ChannelManager.FindDefaultAsync();
 
